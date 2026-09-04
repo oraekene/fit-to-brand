@@ -87,8 +87,17 @@ orchestration. Agent fires Q-sets via the question tool (≤3 per exchange, reco
 first, explicit defaults); answers land in `runs/<id>/PARAMS.log` as
 `Q<id> = <value> | <date> | <who>` plus write-through to the owning artifact.
 `Test-Params` blocks the transition when required keys are missing: S0 needs
-Q0.1–Q0.5 + Q1.1–Q1.4; S5B needs Q5.1; BRAND needs Q10.1; M needs Q13.1.
+Q0.0–Q0.5 + Q1.1–Q1.4; S5B needs Q5.1; BRAND needs Q10.1; M needs Q13.1.
 A phase that exits on assumptions instead of answers is red, same as any gate.
+
+Deterministic triggering: `Test-Params` is the *exit lock* (detects missing answers
+after the fact). `Enter-Phase.ps1 -RunDir runs/<id> -Phase N [-Variant Joint|Rebrand|
+Campaign]` is the *entry lock + ask emitter*: it asserts all prior-phase keys and
+prints the exact Q-set to ask now (exit 1 names the missing questions). Same inputs →
+same ask-list, same code, every time. The remaining non-deterministic step is the
+agent actually invoking the runner each phase — moving that boundary further (CI on
+committed run snapshots, platform pre-transition hooks) is future work, stated here
+so it isn't mistaken for done.
 
 ## Hook-layer file conventions (run artifacts the H1 validators read)
 
@@ -96,5 +105,5 @@ A phase that exits on assumptions instead of answers is red, same as any gate.
 `S5A_FIT.csv`, `S5B_GROUPS.csv` (with `GRP-ID` + non-empty `BRIEF` columns),
 `NOTFIT.md`; `runs/<id>/bridge/THREADS.csv` (`GRP-ID`, `STATUS`), `M_PREDICTIONS.csv`
 (`PRED-ID`, `GRP-ID`, `KILL_CONDITION`, `REPOSITION_CONDITION`); `runs/<id>/GATES.log`;
-`runs/<id>/PARAMS.log` (`Q<id> = <value> | <date> | <who>` per `bridge/QUESTIONNAIRES.md`).
+`runs/<id>/PARAMS.log` (`Q<id> = <value> | <date> | <who> | src=<asked|batch|batch-deferred|default>` per `bridge/QUESTIONNAIRES.md`).
 Headers follow the skill schemas (`icp/references/S2_situations.md` etc.).

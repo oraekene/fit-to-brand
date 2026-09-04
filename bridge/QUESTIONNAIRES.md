@@ -13,14 +13,45 @@ the H1 `Test-Params` hook blocks the transition when required keys are missing
 a *why-it-matters* line and an explicit default — but asked live by the agent, never
 as an async third-party doc.
 
-**Rules:** ask at the last responsible moment (never an upfront mega-form); ≤3
-questions per exchange; every question offers options with a recommendation and a
-default; `TBD` is a legal answer only where marked (and stays flagged until filled);
-re-ask only when `GO BACK` invalidates the answer.
+**Rules:** ask at the last responsible moment (never an upfront mega-form — unless the
+user picks batch mode below); ≤3 questions per exchange in phased mode; every question
+offers options with a recommendation and a default; `TBD` is a legal answer only where
+marked (and stays flagged until filled); re-ask only when `GO BACK` invalidates the
+answer.
 
 **PARAMS.log format** (one line per answer, H1-readable):
-`Q<id> = <value> | <yyyy-mm-dd> | <who>` — e.g. `Q1.1 = single | 2026-09-04 | adaeze`.
+`Q<id> = <value> | <yyyy-mm-dd> | <who> | src=<asked|batch|batch-deferred|default>` —
+e.g. `Q1.1 = single | 2026-09-04 | adaeze | src=asked`. `src` is provenance: later
+audits must distinguish answered from defaulted. Validator regexes read only the
+`Q<id> =` head, so provenance never breaks hooks.
 Write-through targets are listed per Q-set.
+
+## Q0.0 — Run mode (the very first question, before Q0.1)
+
+- **Q0.0 how do you want to answer questions?** phased = ask at each phase
+  (Recommended for first runs) / batch-upfront = answer everything answerable now in
+  frontier rounds R1–R2 (see Modes), rest deferred with defaults / defaults = take
+  every recommended default, interrupt only where no default exists. → run mode,
+  recorded first in PARAMS.log; `Enter-Phase.ps1` and `Test-Params` compose with all
+  three (keys are keys regardless of `src`).
+
+## Modes (set by Q0.0; frontier model borrowed from batch-grill-me)
+
+- **phased (default):** Q-sets fire at their phase per the elicitation spine tables.
+  Maximum context per question, maximum interruptions.
+- **batch-upfront:** two rounds now, then quiet. **R1** (no prerequisites): Q0.1–Q0.5,
+  Q1.1, Q1.3, Q1.4, Q3.1, Q4.2, Q4.3, Q10.1, QR.1 (rebrands), QC.1 (campaigns).
+  **R2** (depends on R1): Q1.2 custom-overlay definition (iff custom), Q3.2 sectors,
+  Q4.1 wedge rank (iff category), Q13.1 thresholds (proposed per motion, confirmed at
+  M0). **Deferred-with-defaults** (depend on run artifacts, cannot be answered
+  honestly upfront): Q2.1, Q3.3, Q5.1, Q5.2, Q6.1, Q7.1, Q8.1, Q8.2, Q9.1–Q9.3,
+  Q11.1–Q11.3, Q12.1, Q12.2, Q14.1 — recorded `src=batch-deferred`, each confirmed or
+  challenged at its phase (a short confirm, not a re-ask). Q14.2 is never
+  deferred-defaulted: kills are always asked live.
+- **defaults:** every Q with a stated default auto-records `src=default`. Still asked
+  live (no default exists): Q0.5 (budget cap), QR.1 (equity sort — judgment, no
+  default), Q14.2 (kill/launch-hold confirms). Q1.4 defaults to `TBD`, Q4.3 to
+  `none-known`, QC.1 to its pre-checks — flagged or confirmed at phase as usual.
 
 ## Q0 — Setup (before S0; two exchanges: Q0.1–0.3, then Q0.4–0.5)
 

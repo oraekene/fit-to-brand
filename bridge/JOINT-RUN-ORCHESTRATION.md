@@ -12,11 +12,13 @@ lists, or two prohibited lists. Copy verbatim, never fork.
 
 No phase is left without its questions; a missing answer blocks like a red gate
 (H1 `Test-Params` checks `PARAMS.log`). Fire via the question tool, ≤3 per exchange,
-recommended option first:
+recommended option first. Deterministic runner: `hooks/Enter-Phase.ps1 -RunDir
+runs/<id> -Phase N` asserts entry keys and prints the exact ask-list (exit 1 =
+BLOCKED with the missing questions named):
 
 | Phase | ASK | Blocks exit until |
 |---|---|---|
-| 0 Setup | Q0.1–Q0.5 (image / video / layout / fonts / cost+cap) | Provider Profile complete |
+| 0 Setup | Q0.0 (mode first) + Q0.1–Q0.5 (image / video / layout / fonts / cost+cap) | Provider Profile complete |
 | 1 S0→S1 | Q1.1–Q1.4 (run-mode / overlay / quotas / claims seed); Q2.1 only on fork ties | header stamped from answers, not defaults |
 | 2 S2→S3 | Q3.1–Q3.3 (currency / sectors / reference pick) | stretch-tested reference chosen |
 | 3 S4→S5A | Q4.1–Q4.3 (wedge rank / cert regimes / never-claims) | NOT-fit seeded by user, not just agent |

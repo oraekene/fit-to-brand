@@ -209,7 +209,7 @@ function Need-Params($gate, $keys, $why) {
   $missing = @($keys | Where-Object { $answered -notcontains $_ })
   Say ($missing.Count -eq 0) $gate "$why$($missing.Count ? " (missing: $($missing -join ','))" : '')"
 }
-if (Stage-On 'S0')  { Need-Params 'E-ask' @('Q0.1','Q0.2','Q0.3','Q0.4','Q0.5','Q1.1','Q1.2','Q1.3','Q1.4') 'S0 elicitation complete (profile + run-mode + overlay + quotas + claims seed)' }
+if (Stage-On 'S0')  { Need-Params 'E-ask' @('Q0.0','Q0.1','Q0.2','Q0.3','Q0.4','Q0.5','Q1.1','Q1.2','Q1.3','Q1.4') 'S0 elicitation complete (mode + profile + run-mode + overlay + quotas + claims seed)' }
 if (Stage-On 'S5B') { Need-Params 'E-ask' @('Q5.1') 'grouping check asked before briefs lock' }
 if (Stage-On 'BRAND') { Need-Params 'E-ask' @('Q10.1') 'guideline modules chosen by user' }
 if (Stage-On 'M')   { Need-Params 'E-ask' @('Q13.1') 'kill/reposition thresholds accepted per thread' }
