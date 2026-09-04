@@ -188,3 +188,29 @@ Write-through targets are listed per Q-set.
   (proven first is pre-checked). → THREADS.csv STATUS.
 - **QC.2 new scene family ack?** Confirm test-asset-before-scale understood (always
   asked — this is where drift enters). → Gate 4 per family.
+
+## QN — Naming (pipeline: `bridge/NAMING.md`; S0 declares `naming: required|n/a`)
+
+- **QN.0 working title?** Keep the S0 project name as PROVISIONAL (Recommended) /
+  propose another. → S0 handle; nothing downstream treats it as decided.
+- **QN.1 rank the criteria?** Order tier-signal vs distinctiveness vs descriptiveness
+  (top two suffice). *Why: breaks shortlist ties deterministically.* → applied at N4.
+- **QN.3 pick from the screened shortlist?** Choose one (screens + tier-read + QN.1
+  rank shown) / send back for more candidates. *Required at phase-6 entry when naming
+  is required — a kit built on an unlocked name is rework.* → NAMES.csv pick.
+- **QN.4 manual checks done?** Confirm trademark search + domain + handle (each `ok`
+  or `waived: reason`). *The agent cannot do these — human confirms, no default,
+  no bulk approval.* → NAMES.csv manual columns.
+
+## QN-R — Rename verdict (rebrand only, alongside QR)
+
+- **QN-R.1 name: keep / evolve / replace?** Decide with name-equity priced
+  (recognition, contracts, shelf, search). Replace routes into N1–N5 with OLD in the
+  confusion corpus; keep routes to migration-copy only.
+
+## QRP — Reports (catalog + pipeline: `bridge/REPORTS.md`)
+
+- **QRP.1 report brief?** Audience + depth (skim = decisions + numbers only /
+  standard (Recommended) / deep) + language. Asked at M0/Stage 11 for R-FINAL and per
+  trigger for the rest. *Why: a report without a reader is a data dump.* → report
+  header + journey mode emphasis.

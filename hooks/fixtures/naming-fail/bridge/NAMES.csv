@@ -1,0 +1,4 @@
+CANDIDATE,ROUTE,TIER_READ,STATUS,REJECT_REASON,MANUAL_TM,MANUAL_DOMAIN,MANUAL_HANDLE
+LuminaHome Glow,compound,mid,pick,,,,
+SunJar,compound,mid,shortlist,,,,
+PayLight,compound,budget,rejected,tier mis-signal,,,

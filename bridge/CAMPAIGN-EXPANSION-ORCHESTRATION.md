@@ -16,7 +16,9 @@ Companion contracts: `AUDIENCE-POSITIONING-BRIDGE.md`, `MEASUREMENT-LOOP.md`.
 | 1 Thread plan | QC.1 (which threads fly — proven pre-checked); Q13.1 (thresholds for new threads) | thread table + M0 rows complete |
 | 2 Per-thread | Q8.2 Generation Plan every generation; QC.2 (new-family test-asset ack) | plan approved before any tool call |
 | 3 Laterals | new group/claim requests exit to S5B/S5A (asked there, never here) | owning run owns the questions |
-| 5 M-loop | Q14.1 verdicts; Q14.2 kill confirms (no defaults) | kills explicitly confirmed |
+| 5 M-loop | Q14.1 verdicts; Q14.2 kill confirms (no defaults); QRP.1 per R-DROP trigger | kills explicitly confirmed; drop report briefed |
+
+Names are locked input on this run — no QN set fires here. A rename request exits to the rebrand run.
 
 ## Entry gates (all three, no exceptions)
 

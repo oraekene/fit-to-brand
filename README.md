@@ -35,6 +35,17 @@ Conventions: all `like/this.md` paths in docs are repo-root-relative. The skill 
 `icp-6` and prose mentions of `icp-6`/`brand-system` refer to the pipelines, not to
 old directory names.
 
+## Features
+
+- **Naming** (`bridge/NAMING.md`): criteria derived from theme/stakes/segments/
+  incumbents/scope → routes → H1 screens (`hooks/Validate-Naming.ps1`) + J7 judgment
+  + human trademark/domain/handle confirms → one pick locked before the Stage 2 kit.
+  Rebrand renames supported (OLD joins the confusion corpus via self-as-P-ID).
+- **Reports** (`bridge/REPORTS.md`): 9 report kinds at their trigger points, generated
+  by a fragments→beats/shape→edit-article→filters pipeline (guides → humanizer →
+  guides, per `writing filters/`), each ending with a teach-back footer. Sample:
+  `bridge/illustrations/REPORT-SUNJAR-FINAL.md`.
+
 ## Ownership rule (prevents all three duplication classes)
 - **icp/ owns definition and logic** — countable groups, falsifiable verbs/wedges,
   words. **brand/ owns activation and expression** — threads, pixels, type, scenes.

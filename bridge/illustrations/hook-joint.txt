@@ -28,8 +28,9 @@ PASS: [H3-approval] Gate4 approval token present in GATES.log
 PASS: [H1-verdict] audit APPROVED token present before scale
 PASS: [B-threads] every group has a thread row or explicit unaddressed
 PASS: [B-m0] every prediction has kill + reposition conditions (1 rows)
+PASS: [E-ask] report brief (QRP.1) recorded for this flight
 PASS: [B-m0] every scaled thread has an M0 row
-PASS: [E-ask] S0 elicitation complete (mode + profile + run-mode + overlay + quotas + claims seed)
+PASS: [E-ask] S0 elicitation complete (mode + profile + run-mode + overlay + quotas + claims seed + working title)
 PASS: [E-ask] grouping check asked before briefs lock
 PASS: [E-ask] guideline modules chosen by user
 PASS: [E-ask] kill/reposition thresholds accepted per thread

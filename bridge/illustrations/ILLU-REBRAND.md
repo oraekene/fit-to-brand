@@ -121,6 +121,7 @@ RESULT: GREEN (all H1 checks pass)
 # -Stage M
 PASS: [B-threads] every group has a thread row or explicit unaddressed
 PASS: [B-m0] every prediction has kill + reposition conditions (2 rows)
+PASS: [E-ask] report brief (QRP.1) recorded for this flight
 PASS: [B-m0] every scaled thread has an M0 row
 PASS: [E-ask] kill/reposition thresholds accepted per thread
 PASS: [X2-naming] file naming clean

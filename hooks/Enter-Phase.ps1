@@ -56,6 +56,12 @@ $prompts = @{
   'QR.2'  = 'Per-group keep/kill/merge/split? accept proposed (rec) / change named groups.'
   'QR.3'  = 'Coexistence window? 8 weeks (rec) / other timing.'
   'QC.1'  = 'Which threads fly? multi-select, proven pre-checked (rec).'
+  'QN.0'  = 'Working title? keep S0 project name PROVISIONAL (rec) / propose another.'
+  'QN.1'  = 'Rank criteria? order tier-signal vs distinctiveness vs descriptiveness.'
+  'QN.3'  = 'Pick from screened shortlist? choose one (rec with rank applied) / send back.'
+  'QN.4'  = 'Manual checks done? confirm trademark + domain + handle (no default).'
+  'QN-R.1' = 'Name: keep / evolve / replace? price name equity first.'
+  'QRP.1' = 'Report brief? audience + depth skim/standard/deep (rec) + language.'
 }
 
 # phase -> exit-keys (joint numbering; rebrand adds QR keys; campaign has own order)
@@ -69,7 +75,7 @@ $joint = @(
   @{ n = 6;  keys = @('Q8.1','Q9.1','Q9.2','Q9.3'); extraRebrand = @() },
   @{ n = 7;  keys = @('Q10.1','Q11.1'); extraRebrand = @() },
   @{ n = 8;  keys = @('Q11.2','Q11.3'); extraRebrand = @() },
-  @{ n = 9;  keys = @('Q12.1','Q12.2','Q13.1'); extraRebrand = @('QR.3') },
+  @{ n = 9;  keys = @('Q12.1','Q12.2','Q13.1','QRP.1'); extraRebrand = @('QR.3') },
   @{ n = 10; keys = @('Q14.1'); extraRebrand = @() }
 )
 $campaign = @(
@@ -90,7 +96,16 @@ if (Test-Path -LiteralPath $plog) {
   }
 }
 
-# entry requirement = exit-keys of all earlier phases (+Q4.1 iff category run)
+function Test-NamingRequired($runDir) {
+  $s0 = Join-Path $runDir 'icp/S0_SPEC.md'
+  if (!(Test-Path -LiteralPath $s0)) { return $true }  # S0 unwritten: assume required, S0 gate decides
+  $head = (Get-Content -LiteralPath $s0 -TotalCount 6) -join "`n"
+  if ($head -match 'naming:\s*n/a\b') { return $false }
+  return $true
+}
+$namingReq = Test-NamingRequired $RunDir
+
+# entry requirement = exit-keys of all earlier phases (+Q4.1 iff category run; +QN.3 iff naming required)
 $need = @()
 foreach ($ph in $table) {
   if ($ph.n -ge $Phase) { break }
@@ -98,6 +113,7 @@ foreach ($ph in $table) {
   if ($Variant -eq 'Rebrand') { $need += $ph.extraRebrand }
 }
 if (($answers['Q1.1'] -eq 'category') -and ($Phase -gt 3)) { $need += @('Q4.1') }
+if ($namingReq -and ($Variant -ne 'Campaign') -and ($Phase -gt 5)) { $need += @('QN.3') }
 $need = @($need | Select-Object -Unique)
 $missing = @($need | Where-Object { -not $answers.ContainsKey($_) })
 

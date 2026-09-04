@@ -24,6 +24,8 @@ Same phase binding as the joint run (missing answers block via `Test-Params`), p
 | Transition | QR.3 (coexistence window; default 8 weeks) | sell-through timing in plan |
 | Gate 3 re-Anchor | Q9.3 confirm explicitly includes deprecation scope | deprecation as OPEN ISSUES |
 | M0 | confusion-with-OLD probe thresholds inside Q13.1; launch-hold via Q14.2 (no default) | hold conditions exist |
+| N rename | QN-R.1 keep / evolve / replace (name equity priced) → N1–N5 if replace; QN.3 pick; QN.4 manual | renamed-or-kept decided before re-Anchor |
+| Reports | QRP.1 per R-MIGRATION trigger | migration report briefed |
 
 ## Run map
 

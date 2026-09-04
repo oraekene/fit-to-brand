@@ -23,11 +23,12 @@ BLOCKED with the missing questions named):
 | 2 S2→S3 | Q3.1–Q3.3 (currency / sectors / reference pick) | stretch-tested reference chosen |
 | 3 S4→S5A | Q4.1–Q4.3 (wedge rank / cert regimes / never-claims) | NOT-fit seeded by user, not just agent |
 | 4 S5B | Q5.1–Q5.2 (grouping check / motion) | groups confirmed before briefs lock |
+| N naming (N0–N5) | QN.0 working title (S0) → QN.1 criteria rank → QN.3 pick → QN.4 manual checks | name locked before Stage 2 kit (phase-6 entry) |
+| 9 brand 10→11 | Q12.1 (views); Q12.2 (signoff); Q13.1 (kill/reposition thresholds); QRP.1 (report brief) | M0 rows + report brief exist per scaled thread |
 | 5 brand 0→1 | Q6.1 (import ack); Q7.1 (Gate 2 direction) | brief imported, direction approved |
 | 6 brand 2→3 | Q8.1 (fonts A/B); Q9.1–Q9.3 (audit agree / refine-vs-restart / Anchor confirm) | Anchor confirmed explicitly |
 | 7 brand 4→5 | Q10.1 (modules); Q11.1 (SKUs) | modules + SKU set locked |
 | 8 brand 6→9 | Q8.2 every generation; Q11.2 (Lock roles); Q11.3 (formats+variables) | plan approved, roles confirmed |
-| 9 brand 10→11 | Q12.1 (views); Q12.2 (signoff); Q13.1 (kill/reposition thresholds) | M0 rows exist per scaled thread |
 | 10 M1→M4 | Q14.1 (verdicts); Q14.2 (kill-group / launch-hold confirms — no defaults) | kills explicitly confirmed |
 
 ## Run map

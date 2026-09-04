@@ -36,9 +36,12 @@ description: Router for the combined fit→brand→market system. Use when start
 - **Ask before leaving every phase** — elicitation spine per orchestration, full Q-sets
   in `bridge/QUESTIONNAIRES.md` (Q0.0 run mode first: phased / batch-upfront / defaults;
   ≤3 questions per exchange, recommended first, explicit defaults; answers to
-  `runs/<id>/PARAMS.log`, H1 `Test-Params` blocks on missing keys). Deterministic
-  trigger: `hooks/Enter-Phase.ps1 -RunDir runs/<id> -Phase N` (-Variant Rebrand or
-  Campaign where applicable) prints the phase ask-list and locks entry on missing
-  prior keys. A silent run is a failed run: no phase exits on assumptions.
+  `runs/<id>/PARAMS.log`, H1 `Test-Params` blocks on missing keys). Naming QN set
+  (`bridge/NAMING.md`: working title → criteria → screens → pick locked before the
+  Stage 2 kit) and report briefs QRP.1 (`bridge/REPORTS.md` catalog + pipeline) ride
+  the same spine. Deterministic trigger: `hooks/Enter-Phase.ps1 -RunDir runs/<id>
+  -Phase N` (-Variant Rebrand or Campaign where applicable) prints the phase ask-list
+  and locks entry on missing prior keys. A silent run is a failed run: no phase exits
+  on assumptions.
 - New threads/groups/claims/identity changes exit to their owning run — campaign
   expansion cannot approve them; rebrand cannot skip equity guardrails.

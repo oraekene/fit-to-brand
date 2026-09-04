@@ -89,7 +89,7 @@ SCALE. Confusion with LuminaHome sat at 4% — a watchlist entry, not a rework. 
 findings flowed back to their owners: the trial rate into the stakes anchor, the
 4% into prohibited styles, the Figma type-finishing fallback marked validated.
 
-Adaeze keeps the GATES.log printed above her desk. Thirty-six green lines. Not because
+Adaeze keeps the GATES.log printed above her desk. Thirty-seven green lines. Not because
 green is the point — the fail fixture in `hooks/fixtures/` shows what red looks like —
 but because every line is a decision nobody has to re-litigate. Taste still matters at
 SunJar. It just no longer gets to vote before the evidence is in.

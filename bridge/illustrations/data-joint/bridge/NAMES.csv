@@ -1,0 +1,6 @@
+CANDIDATE,ROUTE,TIER_READ,STATUS,REJECT_REASON,MANUAL_TM,MANUAL_DOMAIN,MANUAL_HANDLE
+SunJar,compound,mid,pick,,clear,registered,held
+AmberRail,compound,mid,shortlist,,,,
+PayLight,compound,budget,rejected,tier mis-signal: reads cheap against mid PAYG,,,
+Lumina,evocative,mid,rejected,H1 confusion: reads as LuminaHome P-0003,,,
+GridFree,descriptive,mid,rejected,promise-check: implies absolute off-grid; Out-of-Scope grid-tie confusion,,,

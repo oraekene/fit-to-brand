@@ -43,6 +43,19 @@ jobs:
           ./hooks/Validate-Gates.ps1 -RunDir bridge/illustrations/data-campaign -Stage BRAND
           ./hooks/Validate-Gates.ps1 -RunDir bridge/illustrations/data-campaign -Stage M
 
+      - name: Naming screens go GREEN (joint miniature, screen + lock)
+        shell: pwsh
+        run: |
+          ./hooks/Validate-Naming.ps1 -RunDir bridge/illustrations/data-joint -Stage screen
+          ./hooks/Validate-Naming.ps1 -RunDir bridge/illustrations/data-joint -Stage lock
+
+      - name: Naming fail fixture goes RED
+        shell: pwsh
+        run: |
+          ./hooks/Validate-Naming.ps1 -RunDir hooks/fixtures/naming-fail -Stage lock
+          if ($LASTEXITCODE -eq 0) { Write-Error 'EXPECTED RED, got GREEN'; exit 1 }
+          Write-Output 'Got expected RED — confused pick still blocked.'
+
       - name: Enter-Phase smoke (PROCEED with keys, BLOCKED without)
         shell: pwsh
         run: |

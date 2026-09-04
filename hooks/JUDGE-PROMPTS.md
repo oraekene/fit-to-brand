@@ -42,7 +42,6 @@ like any red gate; fix the stage, re-run downstream.
 > APPROVED / CORRECTION REQUIRED / REJECT AND REGENERATE.
 
 ## J6 — Refine-vs-Reject classification
-
 > Given the audit + user feedback, classify REFINE (localized: spacing, one color /
 > material / mockup / hierarchy / detail) vs REJECT AND RESTART (any foundational
 > trigger: mood, type, color logic, materials, pack architecture, hierarchy, photo
@@ -50,3 +49,14 @@ like any red gate; fix the stage, re-run downstream.
 > typography; or "fundamentally wrong"). On RESTART, verify isolation: rejected board
 > marked, KEEPs abstract-only, no reuse as generation reference. Return the
 > classification + trigger list.
+
+## J7 — Name judgment (per NAMES.csv candidate; H1 already cleared shape + confusion)
+
+> For each shortlist/pick candidate, judge: (1) pronounceability — sayable across a
+> table, spellable over a bad phone line; (2) tier-signal — reads at the run's S3/S4
+> price band, not one above or below; (3) register fit — survives both T6 tiers
+> (prosumer-concrete speech and enterprise-formal print); (4) promise-check — names
+> nothing S0 Out-of-Scope excludes; (5) sound/look-alike vs P-IDs beyond H1's string
+> match, and vs the OLD name on renames. Return per-candidate PASS/FAIL + the failed
+> criterion + a one-line reason. A FAIL removes the candidate to rejected with that
+> reason (H1 enforces the reason is recorded).

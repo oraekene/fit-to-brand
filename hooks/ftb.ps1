@@ -52,6 +52,8 @@ $exitStages = @{
   0 = @(); 1 = @('S0'); 2 = @('S2', 'S3'); 3 = @('S4', 'S5A'); 4 = @('S5B')
   5 = @(); 6 = @(); 7 = @(); 8 = @('BRAND'); 9 = @('M'); 10 = @()
 }
+# naming screens when CLOSING these phases (self-skips green when S0 says n/a)
+$namingStages = @{ 4 = @('screen'); 6 = @('lock') }
 
 switch ($Command) {
   'init' {
@@ -101,6 +103,17 @@ switch ($Command) {
         Write-Output "EXIT-LOCK: phase $($st.phase) cannot close (Validate-Gates -Stage $vs RED):"
         ($r.out -split "`n" | Where-Object { $_ -match '^FAIL' }) | Write-Output
         Write-Output "RESULT: BLOCKED (fix the stage, re-run downstream, then ftb.ps1 next)"
+        exit 1
+      }
+    }
+    # 1b. naming-lock on its phases (Validate-Naming self-skips when S0 says n/a)
+    foreach ($ns in $namingStages[[int]$st.phase]) {
+      if (-not $ns) { continue }
+      $r = Repo-Pwsh 'Validate-Naming.ps1' @('-RunDir', $runDir, '-Stage', $ns)
+      if ($r.code -ne 0) {
+        Write-Output "NAMING-LOCK: phase $($st.phase) cannot close (Validate-Naming -Stage $ns RED):"
+        ($r.out -split "`n" | Where-Object { $_ -match '^FAIL' }) | Write-Output
+        Write-Output "RESULT: BLOCKED (see bridge/NAMING.md N3-N5, then ftb.ps1 next)"
         exit 1
       }
     }

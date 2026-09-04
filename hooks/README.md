@@ -70,6 +70,9 @@ runner that binds them:
 | Thread-per-group | every non-retired group has ≥1 thread row or explicit `unaddressed` | H1 | `Test-Threads` |
 | Wiring marks | carry-over/new, unaddressed, EVIDENCE values from closed enum | H1 | `Test-Blocks` |
 | M-file chain | M0→M1→M2→M3 present in order before M4 writes | H1 existence | `Test-MChain` |
+| N naming screen | candidates have route + status; rejections reasoned; caps hold; shortlist H1-clean | H1 | `Validate-Naming.ps1 -Stage screen` (ftb phase-4 exit) |
+| N naming lock | exactly one pick; pick H1-clean; TM/domain/handle confirmed | H1 presence | `Validate-Naming.ps1 -Stage lock` (ftb phase-6 exit) |
+| J7 name judgment | pronounceability, tier-signal, register, promise-check, sound-alikes | H2 prompt | judge |
 
 ## Trigger points (when the runner fires)
 
@@ -94,7 +97,8 @@ orchestration. Agent fires Q-sets via the question tool (≤3 per exchange, reco
 first, explicit defaults); answers land in `runs/<id>/PARAMS.log` as
 `Q<id> = <value> | <date> | <who>` plus write-through to the owning artifact.
 `Test-Params` blocks the transition when required keys are missing: S0 needs
-Q0.0–Q0.5 + Q1.1–Q1.4; S5B needs Q5.1; BRAND needs Q10.1; M needs Q13.1.
+Q0.0–Q0.5 + Q1.1–Q1.4 + QN.0; S5B needs Q5.1; BRAND needs Q10.1; M needs Q13.1 + QRP.1.
+QN.3 (name pick) is required at phase-6 entry when S0 declares naming required.
 A phase that exits on assumptions instead of answers is red, same as any gate.
 
 Deterministic triggering: `Test-Params` is the *exit lock* (detects missing answers

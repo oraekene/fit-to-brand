@@ -189,6 +189,11 @@ if (Stage-On 'M') {
   else {
     $nokill = @($m | Where-Object { -not $_.KILL_CONDITION -or -not $_.REPOSITION_CONDITION })
     Say ($nokill.Count -eq 0) 'B-m0' "every prediction has kill + reposition conditions ($(@($m).Count) rows)"
+    $answeredM = @()
+    if (Test-Path -LiteralPath (Join-Path $RunDir 'PARAMS.log')) {
+      $answeredM = @(Get-Content -LiteralPath (Join-Path $RunDir 'PARAMS.log') | ForEach-Object { if ($_ -match '^\s*(Q[A-Z0-9.]+)\s*=') { $Matches[1] } } | Select-Object -Unique)
+    }
+    Say ($answeredM -contains 'QRP.1') 'E-ask' 'report brief (QRP.1) recorded for this flight'
     if ($t) {
       $scaled = @($t | Where-Object { $_.STATUS -match 'scaled|flight|live' } | ForEach-Object { $_.'GRP-ID' })
       $mp = @($m | ForEach-Object { $_.'GRP-ID' })
@@ -203,13 +208,13 @@ $plog = Join-Path $RunDir 'PARAMS.log'
 $answered = @()
 if (Test-Path -LiteralPath $plog) {
   $answered = @(Get-Content -LiteralPath $plog | ForEach-Object {
-    if ($_ -match '^\s*(Q[\d.]+)\s*=') { $Matches[1] } } | Select-Object -Unique)
+    if ($_ -match '^\s*(Q[A-Z0-9.]+)\s*=') { $Matches[1] } } | Select-Object -Unique)
 }
 function Need-Params($gate, $keys, $why) {
   $missing = @($keys | Where-Object { $answered -notcontains $_ })
   Say ($missing.Count -eq 0) $gate "$why$($missing.Count ? " (missing: $($missing -join ','))" : '')"
 }
-if (Stage-On 'S0')  { Need-Params 'E-ask' @('Q0.0','Q0.1','Q0.2','Q0.3','Q0.4','Q0.5','Q1.1','Q1.2','Q1.3','Q1.4') 'S0 elicitation complete (mode + profile + run-mode + overlay + quotas + claims seed)' }
+if (Stage-On 'S0')  { Need-Params 'E-ask' @('Q0.0','Q0.1','Q0.2','Q0.3','Q0.4','Q0.5','Q1.1','Q1.2','Q1.3','Q1.4','QN.0') 'S0 elicitation complete (mode + profile + run-mode + overlay + quotas + claims seed + working title)' }
 if (Stage-On 'S5B') { Need-Params 'E-ask' @('Q5.1') 'grouping check asked before briefs lock' }
 if (Stage-On 'BRAND') { Need-Params 'E-ask' @('Q10.1') 'guideline modules chosen by user' }
 if (Stage-On 'M')   { Need-Params 'E-ask' @('Q13.1') 'kill/reposition thresholds accepted per thread' }
