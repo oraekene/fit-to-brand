@@ -55,6 +55,11 @@ each step ends on a checkable criterion, facts keep one source of truth):
    this reader), prerequisites it assumed, follow-up questions for the agent, and a
    decisions log (non-obvious calls that may need revisiting — learning-record
    spirit). *Done when: a cold reader knows what to ask next.*
+   Pipeline trace (which stages ran, fragment counts, filter passes) is builder
+   provenance, not reader content: record it in `GATES.log`
+   (`R-<KIND> generated: fragments N → beats|shape → edit → guides→humanizer→guides`),
+   never in the report body. The report carries bracket citations to artifacts; the
+   log carries how it was made.
 
 ## (c) Writing filters (in `writing filters/`, applied in this order — final)
 

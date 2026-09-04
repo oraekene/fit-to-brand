@@ -1,11 +1,5 @@
 # SunJar final report (R-FINAL, standard depth)
 
-*Pipeline: texture fragments mined from `data-joint/` (pilot nights, shelf sighting,
-cooling objection) → beats journey (prerequisites: reader knows kerosene costs money
-and light needs trust) → edit-article order check → soem guides → humanizer →
-soem guides re-check, with voice budget spent (vignette opener, one aside, concrete
-nouns). Every figure traces to the artifact in brackets. No invented numbers.*
-
 ## The ninth night
 
 On the ninth night of the pilot, one of the five test homes left the kerosene
