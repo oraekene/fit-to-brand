@@ -33,8 +33,11 @@ each step ends on a checkable criterion, facts keep one source of truth):
    heterogeneous fragments (sharp sentences, claim + one-line justification, vignettes
    from audits and M3 calls, leading words the run coined — *amber rail*, *kill
    latency*). Capture from the first artifact; append-only; `---` separators; no
-   headings in the body. *Done when: every source row of the catalog entry has ≥1
-   fragment pointing at it.*
+   headings in the body. Texture rule: the pile must hold ≥3 texture fragments before
+   any journey starts — a line someone actually said, a scene someone actually saw, a
+   fear in plain words. Reports can only be as vivid as the pile; a pile of pure
+   claims produces a flat report no filter can save. *Done when: every source row of
+   the catalog entry has ≥1 fragment pointing at it, plus the 3 texture fragments.*
 2. **Journey — beats or shape.** Settle prerequisites first: what this reader already
    knows (beats grounding). Story-first reports (FINAL, MIGRATION, FLIGHT) run
    beat-by-beat: 2–3 candidate openings, user picks, one beat at a time, each
@@ -73,6 +76,33 @@ each step ends on a checkable criterion, facts keep one source of truth):
 3. **`soem writing guides` third — re-check, not optional.** The humanizer is general
    and can reintroduce a banned shape while fixing a word. The guides' own text names
    this the most-skipped step and the reason output drifts generic. Check, fix, ship.
+
+### Voice budget (what the filters don't ban — spend it deliberately)
+
+The bans above remove scaffolding *standing in for* content. They do not ban voice,
+but a run that applies only the bans converges on flat. So every report earns this
+budget explicitly, and the journey step must spend most of it:
+
+- **One vignette opener** (beats reports) or one concrete scene inside the first
+  section (shape reports) — a pilot night, a shelf under fluorescents, a quote from
+  a pitch. Mined from texture fragments, never invented at draft time.
+- **One genuine aside** (parenthetical, humanizer's own keep-list): a doubt, a
+  mixed feeling, a self-correction. Felt stakes with numbers attached stay; performed
+  enthusiasm goes.
+- **Concrete nouns over abstract labels**, sentence lengths unpredictable (the guides
+  demand this already — enforce it: no two adjacent paragraphs with the same shape),
+  spoken-voice test throughout.
+- **Counterweight, applied by name:** the humanizer's "Human details to keep" —
+  specific unusual details, mixed feelings, asides, varied rhythm. The step-2 pass
+  must check for their *presence*, not just for tells' absence. A draft with zero
+  tells and zero details fails this check and returns to journey.
+- **Earned relaxations (rare, never default):** a single short punch sentence (never
+  a stack); a three-count only when the count is real (three buyer groups is a fact,
+  not padding); one closing decision line at the very end. Each needs a reason
+  recorded — "earned" means defensible, not decorated.
+- Cover-letter-specific bans map across as: throat-clearing covers report openers
+  ("This report provides an overview of…" goes); generic-positive-endings covers
+  send-off closers (end on the last concrete fact or next action).
 
 ## Per-report contracts (must-contain; shape reports)
 
