@@ -1,0 +1,63 @@
+# Layer-3 enforcement: bad run states cannot land on main, on any platform.
+# - fixtures/pass must go GREEN, fixtures/fail must go RED (both directions asserted)
+# - every bridge/illustrations/data-* miniature must go GREEN at its covered stages
+# - Enter-Phase smoke: PROCEED where keys exist, BLOCKED where they don't
+# - any committed runs/<id>/ snapshot (dir containing PARAMS.log) must go GREEN (ALL)
+# runs/ is git-ignored by default; opt a run in with: git add -f runs/<id>
+name: fit-to-brand-gates
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fixture pass goes GREEN
+        shell: pwsh
+        run: ./hooks/Validate-Gates.ps1 -RunDir hooks/fixtures/pass
+
+      - name: Fixture fail goes RED (a validator that cannot fail is decoration)
+        shell: pwsh
+        run: |
+          ./hooks/Validate-Gates.ps1 -RunDir hooks/fixtures/fail
+          if ($LASTEXITCODE -eq 0) { Write-Error 'EXPECTED RED, got GREEN'; exit 1 }
+          Write-Output 'Got expected RED — fail fixture still fails.'
+
+      - name: Illustration joint miniature goes GREEN
+        shell: pwsh
+        run: ./hooks/Validate-Gates.ps1 -RunDir bridge/illustrations/data-joint
+
+      - name: Illustration rebrand miniature goes GREEN (S5B + M)
+        shell: pwsh
+        run: |
+          ./hooks/Validate-Gates.ps1 -RunDir bridge/illustrations/data-rebrand -Stage S5B
+          ./hooks/Validate-Gates.ps1 -RunDir bridge/illustrations/data-rebrand -Stage M
+
+      - name: Illustration campaign miniature goes GREEN (BRAND + M)
+        shell: pwsh
+        run: |
+          ./hooks/Validate-Gates.ps1 -RunDir bridge/illustrations/data-campaign -Stage BRAND
+          ./hooks/Validate-Gates.ps1 -RunDir bridge/illustrations/data-campaign -Stage M
+
+      - name: Enter-Phase smoke (PROCEED with keys, BLOCKED without)
+        shell: pwsh
+        run: |
+          ./hooks/Enter-Phase.ps1 -RunDir bridge/illustrations/data-joint -Phase 4
+          ./hooks/Enter-Phase.ps1 -RunDir hooks/fixtures/fail -Phase 4
+          if ($LASTEXITCODE -eq 0) { Write-Error 'EXPECTED BLOCKED, got PROCEED'; exit 1 }
+          Write-Output 'Got expected BLOCKED — entry lock still locks.'
+
+      - name: Committed run snapshots go GREEN
+        shell: pwsh
+        run: |
+          $found = @(Get-ChildItem -LiteralPath runs -Directory -ErrorAction SilentlyContinue |
+            Where-Object { Test-Path -LiteralPath (Join-Path $_.FullName 'PARAMS.log') })
+          if ($found.Count -eq 0) { Write-Output 'No committed run snapshots — nothing to check.'; exit 0 }
+          foreach ($d in $found) {
+            Write-Output "Checking $($d.FullName)"
+            ./hooks/Validate-Gates.ps1 -RunDir $d.FullName
+          }

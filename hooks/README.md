@@ -2,8 +2,15 @@
 
 Direct answer to "can all gates be hooks?": **all gates can be *triggered*
 deterministically** (every stage transition invokes the hook runner, which blocks on
-red). But only a subset can be *evaluated* deterministically. Three tiers:
+red). But only a subset can be *evaluated* deterministically. Three tiers plus the
+runner that binds them:
 
+- **Runner (`ftb.ps1`) — the choke point.** Phases advance only via `ftb next`
+  (`init` / `next` / `ask` / `status`; `-RunId`, `-Variant Joint|Rebrand|Campaign`).
+  `next` runs the exit-lock (Validate-Gates stages mapped to the closing phase) then
+  the entry-lock for the next phase (Enter-Phase); both green → STATE.json advances
+  and the next ask-list prints. The agent's only transition rule: never work a phase
+  STATE.json doesn't name. Verified: full 0→10 walk with locks firing at every step.
 - **H1 — deterministic validators** (`Validate-Gates.ps1`). Pure functions over run
   artifacts: counts, ID shapes, enum membership, regex bans, presence checks, file
   existence. Exit 0 = pass, non-zero = red, blocks the transition. No LLM, no human.
@@ -94,10 +101,13 @@ Deterministic triggering: `Test-Params` is the *exit lock* (detects missing answ
 after the fact). `Enter-Phase.ps1 -RunDir runs/<id> -Phase N [-Variant Joint|Rebrand|
 Campaign]` is the *entry lock + ask emitter*: it asserts all prior-phase keys and
 prints the exact Q-set to ask now (exit 1 names the missing questions). Same inputs →
-same ask-list, same code, every time. The remaining non-deterministic step is the
-agent actually invoking the runner each phase — moving that boundary further (CI on
-committed run snapshots, platform pre-transition hooks) is future work, stated here
-so it isn't mistaken for done.
+same ask-list, same code, every time. In practice drive both through `ftb.ps1 next`
+(see Runner above) rather than invoking them separately.
+Enforcement beyond this repo: `platforms/` (per-agent adapters incl. Claude Code
+blocking guard) + `.github/workflows/fit-to-brand-gates.yml` (CI bouncer — bad run
+states cannot land on main). The remaining non-deterministic step is the
+agent actually invoking the runner each phase — that is one rule instead of dozens,
+and CI catches violations at land time.
 
 ## Hook-layer file conventions (run artifacts the H1 validators read)
 

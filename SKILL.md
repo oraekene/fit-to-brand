@@ -28,7 +28,11 @@ description: Router for the combined fit→brand→market system. Use when start
 - **Hooks before every stage transition** — see `hooks/README.md` matrix:
   run Tier H1 validators (`hooks/Validate-Gates.ps1 -RunDir runs/<id> -Stage <stage>`);
   red blocks the next stage. H2 judge prompts for substance calls; H3 human approvals
-  recorded in the run gate log (H1 verifies their existence).
+  recorded in the run gate log (H1 verifies their existence). Prefer driving all of
+  it through `hooks/ftb.ps1` (`init -RunId <id> -Variant <v> -Mode <m>` once, then
+  `next` per transition): phases advance only through the runner's STATE.json —
+  never self-declared. Where the platform offers pre-tool hooks, install the matching
+  `hooks/platforms/` adapter; CI (`.github/workflows/`) backstops everything at land.
 - **Ask before leaving every phase** — elicitation spine per orchestration, full Q-sets
   in `bridge/QUESTIONNAIRES.md` (Q0.0 run mode first: phased / batch-upfront / defaults;
   ≤3 questions per exchange, recommended first, explicit defaults; answers to

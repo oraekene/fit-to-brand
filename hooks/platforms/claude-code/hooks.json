@@ -1,0 +1,16 @@
+{
+  "$comment": "Merge into .claude/settings.json (project root). Blocks Write/Edit to future-phase ftb run files. Requires pwsh 7+. Set FIT_TO_BRAND_ROOT if the bundle is vendored outside the project, else the guard finds it by upward search for hooks/ftb.ps1.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -File ./hooks/platforms/claude-code/guard-phase.ps1"
+          }
+        ]
+      }
+    ]
+  }
+}

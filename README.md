@@ -41,15 +41,27 @@ old directory names.
 - **bridge/ owns the join** — Blocks A+B are filled once and imported verbatim, never
   forked. Full analysis in the bridge docs; router `SKILL.md` enforces it per run.
 
-## Gates → hooks
+## Gates → hooks (impossible to proceed unchecked)
 
 Every gate is classified and enforced at its trigger point — see `hooks/README.md`
 for the full gate→hook matrix. Tier H1 (deterministic: counts, IDs, registries,
 coverage) runs as `hooks/Validate-Gates.ps1` and blocks on non-zero exit. Tier H2
 (judgment: substance, specificity, audit rubric) runs as structured LLM-judge prompts.
 Tier H3 (human approvals: the 4 brand gates, Anchor, launch-hold) is recorded in the
-run's gate log, whose *existence* H1 verifies. No stage transition without its hooks
-green.
+run's gate log, whose *existence* H1 verifies. Elicitation (no silent runs): Q0.0 run
+mode first (phased / batch-upfront / defaults), Q-sets per phase in
+`bridge/QUESTIONNAIRES.md`, answers in `runs/<id>/PARAMS.log`, H1 `Test-Params` blocks
+on missing keys. No stage transition without its hooks green.
+
+Enforcement architecture (platform-agnostic bundle, works on any agent):
+**runner** `hooks/ftb.ps1` (`init`/`next`/`ask`/`status`) owns all phase transitions
+via `runs/<id>/STATE.json` — the agent's only transition rule; **adapters** in
+`hooks/platforms/` wire true blocking where a platform offers pre-tool hooks
+(Claude Code guard included, generic + opencode mapping documented); **CI**
+`.github/workflows/fit-to-brand-gates.yml` asserts green-fixtures-green,
+red-fixtures-red, miniatures green, and any committed `runs/<id>/` snapshot green —
+opt a run in with `git add -f runs/<id>`. A skipped check can happen in-chat anywhere;
+it cannot land on main anywhere.
 
 ## Provenance
 
