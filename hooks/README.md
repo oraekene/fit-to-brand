@@ -80,10 +80,21 @@ manual `./hooks/Validate-Gates.ps1 -RunDir runs/<id> -Stage <stage>`). H2 prompt
 in `JUDGE-PROMPTS.md`; H3 log format: one line per approval,
 `H3 <gate> APPROVED <yyyy-mm-dd> <who>`.
 
+## Elicitation (ASK spine — the anti-silent-run hook)
+
+Full Q-sets: `bridge/QUESTIONNAIRES.md`; per-orchestration timing tables sit atop each
+orchestration. Agent fires Q-sets via the question tool (≤3 per exchange, recommended
+first, explicit defaults); answers land in `runs/<id>/PARAMS.log` as
+`Q<id> = <value> | <date> | <who>` plus write-through to the owning artifact.
+`Test-Params` blocks the transition when required keys are missing: S0 needs
+Q0.1–Q0.5 + Q1.1–Q1.4; S5B needs Q5.1; BRAND needs Q10.1; M needs Q13.1.
+A phase that exits on assumptions instead of answers is red, same as any gate.
+
 ## Hook-layer file conventions (run artifacts the H1 validators read)
 
 `runs/<id>/icp/S0_SPEC.md`, `S2_SITUATIONS.csv/.md`, `S3_STAKES.csv`, `S4_PRODUCTS.csv`,
 `S5A_FIT.csv`, `S5B_GROUPS.csv` (with `GRP-ID` + non-empty `BRIEF` columns),
 `NOTFIT.md`; `runs/<id>/bridge/THREADS.csv` (`GRP-ID`, `STATUS`), `M_PREDICTIONS.csv`
-(`PRED-ID`, `GRP-ID`, `KILL_CONDITION`, `REPOSITION_CONDITION`); `runs/<id>/GATES.log`.
+(`PRED-ID`, `GRP-ID`, `KILL_CONDITION`, `REPOSITION_CONDITION`); `runs/<id>/GATES.log`;
+`runs/<id>/PARAMS.log` (`Q<id> = <value> | <date> | <who>` per `bridge/QUESTIONNAIRES.md`).
 Headers follow the skill schemas (`icp/references/S2_situations.md` etc.).

@@ -3,5 +3,6 @@ PASS: [H3-approval] Gate2 approval token present in GATES.log
 PASS: [H3-approval] Gate3 approval token present in GATES.log
 PASS: [H3-approval] Gate4 approval token present in GATES.log
 PASS: [H1-verdict] audit APPROVED token present before scale
+PASS: [E-ask] guideline modules chosen by user
 PASS: [X2-naming] file naming clean
 RESULT: GREEN (all H1 checks pass)

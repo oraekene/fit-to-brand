@@ -29,5 +29,9 @@ description: Router for the combined fit→brand→market system. Use when start
   run Tier H1 validators (`hooks/Validate-Gates.ps1 -RunDir runs/<id> -Stage <stage>`);
   red blocks the next stage. H2 judge prompts for substance calls; H3 human approvals
   recorded in the run gate log (H1 verifies their existence).
+- **Ask before leaving every phase** — elicitation spine per orchestration, full Q-sets
+  in `bridge/QUESTIONNAIRES.md` (≤3 questions per exchange, recommended first,
+  explicit defaults; answers to `runs/<id>/PARAMS.log`, H1 `Test-Params` blocks on
+  missing keys). A silent run is a failed run: no phase exits on assumptions.
 - New threads/groups/claims/identity changes exit to their owning run — campaign
   expansion cannot approve them; rebrand cannot skip equity guardrails.

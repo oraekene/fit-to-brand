@@ -185,7 +185,7 @@ amended sources; cores untouched.
 
 ## Hooks (real output, `hook-joint.txt`)
 
-Full H1 run green — 32/32, including the-X exclusion that initially tripped on the
+Full H1 run green — 36/36, including the-X exclusion that initially tripped on the
 numbered `# 6. Out-of-Scope` heading (validator now accepts the skill's own numbered
 template; the gate caught a real shape mismatch before any downstream stage ran):
 
@@ -221,6 +221,10 @@ PASS: [H1-verdict] audit APPROVED token present before scale
 PASS: [B-threads] every group has a thread row or explicit unaddressed
 PASS: [B-m0] every prediction has kill + reposition conditions (1 rows)
 PASS: [B-m0] every scaled thread has an M0 row
+PASS: [E-ask] S0 elicitation complete (profile + run-mode + overlay + quotas + claims seed)
+PASS: [E-ask] grouping check asked before briefs lock
+PASS: [E-ask] guideline modules chosen by user
+PASS: [E-ask] kill/reposition thresholds accepted per thread
 PASS: [X2-naming] file naming clean
 RESULT: GREEN (all H1 checks pass)
 ```

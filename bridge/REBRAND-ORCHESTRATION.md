@@ -13,6 +13,18 @@ a competitor and diagnosed like a draft; (2) **recognition equity is a constrain
 the restart rules still apply, but KEEP must explicitly price what survives, and a
 migration/deprecation plan ships with the system.
 
+## Elicitation spine (joint spine plus rebrand extras — Q-sets in `QUESTIONNAIRES.md`)
+
+Same phase binding as the joint run (missing answers block via `Test-Params`), plus:
+
+| Phase | ASK extra | Blocks exit until |
+|---|---|---|
+| 0 Setup | QR.1 (equity sort: must-keep / negotiable / must-drop) + Q0 re-confirm of toolchain | guardrails approved before any diagnosis |
+| S5B regroup | QR.2 (per-group keep / kill / merge / split) on top of Q5.1–Q5.2 | regroup decision per group recorded |
+| Transition | QR.3 (coexistence window; default 8 weeks) | sell-through timing in plan |
+| Gate 3 re-Anchor | Q9.3 confirm explicitly includes deprecation scope | deprecation as OPEN ISSUES |
+| M0 | confusion-with-OLD probe thresholds inside Q13.1; launch-hold via Q14.2 (no default) | hold conditions exist |
+
 ## Run map
 
 ```text

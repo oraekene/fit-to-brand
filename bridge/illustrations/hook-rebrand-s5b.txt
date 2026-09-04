@@ -1,3 +1,4 @@
 PASS: [G5-groups] brief count = group count (4 groups)
+PASS: [E-ask] grouping check asked before briefs lock
 PASS: [X2-naming] file naming clean
 RESULT: GREEN (all H1 checks pass)

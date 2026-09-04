@@ -8,6 +8,16 @@ use `REBRAND-ORCHESTRATION.md`. This run **creates zero new strategy and zero ne
 identity**: every word comes from an existing S5B brief, every pixel from the Anchor.
 Companion contracts: `AUDIENCE-POSITIONING-BRIDGE.md`, `MEASUREMENT-LOOP.md`.
 
+## Elicitation spine (Q-sets in `QUESTIONNAIRES.md`)
+
+| Phase | ASK | Blocks exit until |
+|---|---|---|
+| Entry gates | confirm Anchor + Lock + M0 exist (no questions — a missing gate stops the run, it doesn't prompt workarounds) | all three shown |
+| 1 Thread plan | QC.1 (which threads fly — proven pre-checked); Q13.1 (thresholds for new threads) | thread table + M0 rows complete |
+| 2 Per-thread | Q8.2 Generation Plan every generation; QC.2 (new-family test-asset ack) | plan approved before any tool call |
+| 3 Laterals | new group/claim requests exit to S5B/S5A (asked there, never here) | owning run owns the questions |
+| 5 M-loop | Q14.1 verdicts; Q14.2 kill confirms (no defaults) | kills explicitly confirmed |
+
 ## Entry gates (all three, no exceptions)
 
 1. `ANCHOR STATUS: APPROVED` with locked rules + prohibited styles in the checkpoint.

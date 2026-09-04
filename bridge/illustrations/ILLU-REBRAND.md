@@ -114,6 +114,7 @@ keeps the count gate honest:
 ```text
 # -Stage S5B
 PASS: [G5-groups] brief count = group count (4 groups)
+PASS: [E-ask] grouping check asked before briefs lock
 PASS: [X2-naming] file naming clean
 RESULT: GREEN (all H1 checks pass)
 
@@ -121,6 +122,7 @@ RESULT: GREEN (all H1 checks pass)
 PASS: [B-threads] every group has a thread row or explicit unaddressed
 PASS: [B-m0] every prediction has kill + reposition conditions (2 rows)
 PASS: [B-m0] every scaled thread has an M0 row
+PASS: [E-ask] kill/reposition thresholds accepted per thread
 PASS: [X2-naming] file naming clean
 RESULT: GREEN (all H1 checks pass)
 ```
