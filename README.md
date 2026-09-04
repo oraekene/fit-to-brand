@@ -26,6 +26,11 @@ Join contracts (normative for joint runs): `bridge/AUDIENCE-POSITIONING-BRIDGE.m
 (one audience list, logic/expression split), `bridge/MEASUREMENT-LOOP.md` (M0–M4 market
 validity; BENCHMARK stays craft-conformance).
 
+Worked illustrations (fictional SunJar SHS-200, miniature N=6, all figures illustrative):
+`bridge/illustrations/ILLU-JOINT-RUN.md`, `ILLU-REBRAND.md`, `ILLU-CAMPAIGN.md` — each
+with executable miniature datasets (`data-joint/`, `data-rebrand/`, `data-campaign/`)
+and real `hooks/Validate-Gates.ps1` logs (`hook-*.txt`). Start here before your first run.
+
 Conventions: all `like/this.md` paths in docs are repo-root-relative. The skill name
 `icp-6` and prose mentions of `icp-6`/`brand-system` refer to the pipelines, not to
 old directory names.

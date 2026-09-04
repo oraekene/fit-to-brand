@@ -1,0 +1,7 @@
+P-ID,category,type,form,examples,tier_span,domain,S-IDs_covered,unit_economics,channel,warranty_reg
+P-0001,lighting fuel,product,physical,kerosene lanterns and fuel vendors,T10-T11,home,S-0001;S-0006,2 per litre plus wicks,retail,customary market warranty
+P-0002,backup power,product,physical,small petrol generators 0.9kVA,T8-T10,trade,S-0002,220 plus fuel per litre,dealer,CE
+P-0003,home solar kits,product,physical,LuminaHome SHS-200 rival kit,T9-T10,home,S-0001;S-0005;S-0006,199 financed over 12 months,dealer,CE
+P-0004,phone charging,human-service,physical,street charging kiosks,T11,personal,S-0003,0.3 per charge,direct,customary
+P-0005,cold chain,service,physical,ice-block vendors,T10-T11,trade,S-0004,1 per block at dawn,retail,customary
+P-0006,payment records,product,digital,mobile-money SMS receipts,T11,trade,S-0002;S-0005,N/A,direct,N/A

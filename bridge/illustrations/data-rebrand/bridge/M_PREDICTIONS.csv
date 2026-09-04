@@ -1,0 +1,3 @@
+PRED-ID,GRP-ID,KILL_CONDITION,REPOSITION_CONDITION
+PRED-R1,GRP-01,hold launch if new-vs-old recall stays below 60 after 30 probes,rewrite GRP-01 brief v3 if confusion-with-LuminaHome rises above 10
+PRED-R2,GRP-04,pause GRP-04 flight if term-plan meetings stay below 2 after 20 school visits,reopen GRP-04 wedge if committees cite upfront cost 3 times

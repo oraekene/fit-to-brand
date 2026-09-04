@@ -47,7 +47,7 @@ if (Stage-On 'S0') {
     $missing = @($need | Where-Object { $head -notmatch [regex]::Escape($_) })
     Say ($missing.Count -eq 0) 'G1-header' "header fields present$($missing.Count ? " (missing: $($missing -join ','))" : '')"
     $lines = Get-Content -LiteralPath $s0
-    $oos = @($lines | Select-String -Pattern '(?i)^#+\s*Out-of-Scope')
+    $oos = @($lines | Select-String -Pattern '(?i)^#+\s*(\d+\.\s*)?Out-of-Scope')
     $oosOk = $false
     if ($oos.Count -gt 0) {
       $rest = $lines[(($oos[0].LineNumber))..($lines.Count - 1)] | Where-Object { $_ -notmatch '^\s*#' -and $_.Trim() -ne '' }

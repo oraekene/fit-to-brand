@@ -1,0 +1,11 @@
+S-ID,P-ID,verb,landing_place,spec_module_cite
+S-0001,P-0001,(a),swap the bedside lantern for a hub lamp point on the wall rail,§3.2
+S-0001,P-0003,(a),replace the rival kit on the existing roof-mount with the SunJar hub,§5.1
+S-0002,P-0002,(a),retire the generator for lighting and charging load and keep it for heavy tools only,§3.4
+S-0002,P-0006,b-FACE,query face over the mobile-money SMS receipt log for arrears checks,§6.2
+S-0003,P-0004,(a),swap kiosk queues for hub USB ports at home,§3.3
+S-0004,P-0005,X,200W hub cannot refrigerate so no cooling claim is made,§4.0
+S-0005,P-0006,b-FACE,query face over the install and arrears ledger for route planning,§6.1
+S-0005,P-0003,b-SERV,certified agents install and service both kits on transition accounts,§6.3
+S-0006,P-0001,(a),swap classroom lanterns for hub lamp points fitted by certified agents,§3.2
+S-0006,P-0003,b-DIST,bundle classroom lamp points through school agent orders beside existing kits,§5.2

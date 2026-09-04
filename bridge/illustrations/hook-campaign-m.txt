@@ -1,0 +1,5 @@
+PASS: [B-threads] every group has a thread row or explicit unaddressed
+PASS: [B-m0] every prediction has kill + reposition conditions (3 rows)
+PASS: [B-m0] every scaled thread has an M0 row
+PASS: [X2-naming] file naming clean
+RESULT: GREEN (all H1 checks pass)

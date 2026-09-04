@@ -1,0 +1,7 @@
+S-ID,direct_ticket_typical_USD,failure_cost_max_USD,tier_decade,tier_narrative,priceless_flag,price_note,anchor_source
+S-0001,14,180,T11,T7 nominal,,illustrative: monthly kerosene vs room-fire loss,anchor-illustrative-1
+S-0002,60,900,T10,T6 bounded,,illustrative: extra-hour margin vs stall fire at night,anchor-illustrative-2
+S-0003,6,40,T11,T7 nominal,,illustrative: weekly kiosk fees vs missed callback work,anchor-illustrative-3
+S-0004,25,300,T10,T6 bounded,,illustrative: ice cost vs full melt loss on hot days,anchor-illustrative-4
+S-0005,120,1500,T10,T6 bounded,,illustrative: commission per install vs defaulted kit,anchor-illustrative-5
+S-0006,0,400,T11,T7 nominal,,no_direct_ticket: community vote moves no household spend; failure is a lost term,anchor-illustrative-6

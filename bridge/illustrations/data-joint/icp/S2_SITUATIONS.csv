@@ -1,0 +1,7 @@
+S-ID,level,domain,sector_tags,knowledge_need,decision_moment,action_moment,spec_link
+S-0001,A7,home,,nightly battery and usage log on the app,whether to buy kerosene or charge the hub,N/A: no distinct physical step beyond the lamp switch,§2
+S-0002,B2,trade,SEC-INFORMAL,shop load and payment ledger in the agent book,whether to extend trading one hour past dusk,rewiring the stall lamp and mounting the panel at close,§3
+S-0003,A1,personal,,phone charge level and kiosk prices paid this week,whether to queue at the kiosk or charge at home,plugging the handset into the hub USB port,§3
+S-0004,B2,trade,SEC-INFORMAL,N/A: cooling is thermodynamic not informational,whether to stock cold drinks this week,packing ice blocks around crates at dawn,§6
+S-0005,B1,trade,SEC-ENERGY,agent ledger of installs and arrears,whether to schedule an install or a recovery visit,torquing roof-mount bolts to spec on site,§6
+S-0006,A9,community,SEC-ENERGY,N/A: shared timetable not a record,whether to hold evening classes this term,hanging lamp points along the classroom walls,§2

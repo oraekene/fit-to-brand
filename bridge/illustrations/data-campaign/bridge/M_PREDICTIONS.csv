@@ -1,0 +1,4 @@
+PRED-ID,GRP-ID,KILL_CONDITION,REPOSITION_CONDITION
+PRED-C1,GRP-01,kill harmattan variant if trial requests stay below 0.8 per 100 impressions after 800 impressions,reopen GRP-01 brief after 3 pitches lost on price
+PRED-C2,GRP-02,kill vertical if swipe-through stays below 2.0 after 1500 views,reopen GRP-02 wedge if traders cite generator loyalty 3 times
+PRED-C3,GRP-03,pause rooftop cut if briefing signups stay below 5 after 300 views,reopen GRP-03 brief if agents cite payout timing twice

@@ -1,0 +1,2 @@
+PRED-ID,GRP-ID,KILL_CONDITION,REPOSITION_CONDITION
+PRED-01,GRP-01,pause GRP-01 flight if trial requests stay below 1.0 per 100 impressions after 1000 impressions,reopen GRP-01 brief after 3 failed agent pitches citing price

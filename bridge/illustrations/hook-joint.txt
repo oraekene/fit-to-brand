@@ -1,0 +1,33 @@
+PASS: [G1-header] header fields present
+PASS: [G6-honesty] Out-of-Scope section non-empty
+PASS: [G2-count] S2 rows=6 S3 rows=6 (must match, >0)
+PASS: [G3-ids] all S-IDs match S-0001 shape
+PASS: [G3-ids] S-IDs unique
+PASS: [G3-ids] no dangling S-IDs in S3
+PASS: [G3-ids] sector_tags empty or SEC-KEY shape (custom-key definitions → H2)
+PASS: [G5-lenses] every row ≥1 substantive lens (H1 presence; substance → H2)
+PASS: [G5-lenses] bare N/A without reason absent
+PASS: [G5-bullets] bulleted companion has 6 bullets for 6 S-IDs
+PASS: [G5-zero] $0 rows all flagged (priceless_flag or no_direct_ticket reason)
+PASS: [G5-fitban] zero (a)/(b) tags in S4
+PASS: [G3-ids] all P-IDs match P-0001 shape
+PASS: [G3-ids] P-IDs unique
+PASS: [G5-physical] physical/hybrid rows complete (unit_economics+channel+warranty_reg, channel in registry)
+PASS: [G2-count] every S-ID ≥1 P-ID
+PASS: [G5-rows] every fit row has landing_place + spec cite (presence; specificity → H2)
+PASS: [G2-count] every P-ID dispositioned
+PASS: [G3-ids] no dangling P-IDs in fit
+PASS: [G3-ids] no dangling S-IDs in fit
+PASS: [G5-verbs] no software-only verb on pure-physical P-ID
+PASS: [G6-honesty] NOT-fit non-empty or justified (NOTFIT.md)
+PASS: [G5-groups] brief count = group count (3 groups)
+PASS: [H3-approval] Gate1 approval token present in GATES.log
+PASS: [H3-approval] Gate2 approval token present in GATES.log
+PASS: [H3-approval] Gate3 approval token present in GATES.log
+PASS: [H3-approval] Gate4 approval token present in GATES.log
+PASS: [H1-verdict] audit APPROVED token present before scale
+PASS: [B-threads] every group has a thread row or explicit unaddressed
+PASS: [B-m0] every prediction has kill + reposition conditions (1 rows)
+PASS: [B-m0] every scaled thread has an M0 row
+PASS: [X2-naming] file naming clean
+RESULT: GREEN (all H1 checks pass)
