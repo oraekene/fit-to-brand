@@ -1,0 +1,5 @@
+S-ID,P-ID,verb,landing_place,spec_module_cite
+S-0001,P-0001,b-FACE,query face over the refill log,§2.1
+S-0003,P-0001,b-ING,nightly export into the home corpus,§2.2
+S-0002,P-0002,b-ACC,clip-strip accessory beside the kit on the shelf,§4.1
+S-0002,P-0001,X,no fit: pure-physical torque task,§4.0

@@ -1,0 +1,89 @@
+# hooks/ — gate enforcement (deterministic triggering for all, deterministic evaluation where possible)
+
+Direct answer to "can all gates be hooks?": **all gates can be *triggered*
+deterministically** (every stage transition invokes the hook runner, which blocks on
+red). But only a subset can be *evaluated* deterministically. Three tiers:
+
+- **H1 — deterministic validators** (`Validate-Gates.ps1`). Pure functions over run
+  artifacts: counts, ID shapes, enum membership, regex bans, presence checks, file
+  existence. Exit 0 = pass, non-zero = red, blocks the transition. No LLM, no human.
+- **H2 — judge prompts** (below). Substance/quality calls an LLM-as-judge makes with
+  the cited rubric: lens substantiveness, landing-place specificity, positioning-mix
+  explicitness, theme agreement, audit rubric, refine-vs-reject classification. The
+  *invocation* is deterministic (runner fires the prompt with the artifact attached);
+  the verdict is recorded as `H2 <gate> <PASS|FAIL> <reason>` in `GATES.log`.
+- **H3 — human approvals** (the 4 brand gates, Anchor, Generation-Plan spend approval,
+  launch-hold). Recorded as `H3 <gate> APPROVED <date> <by>` in the run's `GATES.log`.
+  H1 verifies the *existence* of the token before the next stage — a missing approval
+  is a deterministic red; the approval itself stays human.
+
+## Gate→hook matrix (every gate in the combined repo)
+
+### icp/ gates (`icp/references/gates.md`)
+
+| Gate | Check | Tier | Hook |
+|---|---|---|---|
+| G1 header | required header fields present; quotas defaulted, never silently mixed | H1 | `Test-Header` |
+| G2 count | header N = S2 rows = S3 rows = S4 S-ID coverage = S5A coverage | H1 | `Test-Counts` |
+| G3 IDs | `S-0001`/`P-0001` shape, unique, sequential; fit rows reference existing IDs; sector_tags empty or `SEC-KEY` shape (custom-key one-line definitions → H2) | H1 | `Test-Ids` |
+| G4 grammar | theme ≤3 words | H1 | `Test-ThemeWords`; number-agreement → H2 prompt |
+| G5 S2 format | bulleted companion, one bullet per S-ID | H1 | `Test-S2Bullets`; lens substantiveness → H2 |
+| G5 S2 lenses | every row ≥1 substantive lens; N/A lenses carry reasons | H1 presence + H2 substance | `Test-S2Lenses` + judge |
+| G5 S3 $0 | every $0 has `priceless_flag` or `no_direct_ticket`+reason; subsistence rows have livelihood tier + note | H1 | `Test-S3Zero` |
+| G5 S4 fit-ban | zero `(a)/(b)` tags in S4 | H1 (regex) | `Test-S4FitBan` |
+| G5 S4 physical | physical rows have unit_economics + channel + warranty_reg; channel/certs in overlay registry | H1 | `Test-S4Physical` |
+| G5 verb legality | software-only verbs never on pure-physical P-IDs; category self-match never `(a)` | H1 | `Test-VerbLegality` |
+| G5 S5A rows | every row has landing_place + spec cite | H1 presence + H2 specificity | `Test-S5ARows` + judge |
+| G5 S5B | brief count = group count; group nouns in overlay registry; mix + motion explicit | H1 counts/registry + H2 explicitness | `Test-S5B` + judge |
+| G6 honesty | Out-of-Scope non-empty; NOT-fit non-empty or justified; safety note where required | H1 presence | `Test-Honesty` (correctness → H2) |
+| G7 redundancy | no triple-mapped category; one S2 file (second volume only on request) | H1 | `Test-Redundancy` |
+
+### brand/ gates (`brand/SKILL.md`)
+
+| Gate | Check | Tier | Hook |
+|---|---|---|---|
+| Gate 1 brief | approval recorded before reference analysis | H3 (`GATES.log`), existence H1 | `Test-Approval -Gate Gate1` |
+| Gate 2 direction | approval recorded before any kit generation | H3, existence H1 | `Test-Approval -Gate Gate2` |
+| Generation Plan | all required fields present (profile, cost, fonts+source, prohibitions, formats, workaround) | H1 fields + H3 spend approval | `Test-GenPlan` + approval token |
+| Gate 3 Anchor | approval recorded; locked rules + prohibitions in checkpoint | H3, existence H1 | `Test-Approval -Gate Gate3` |
+| Guideline modules | one output per declared module; reviewed separately | H1 (file count = modules) | `Test-Modules` (pixels unverifiable — noted limit) |
+| Typography | exact family + source + role recorded; visible labels claimed | H1 record check (render match needs vision → H2/human note) | `Test-TypeRecord` |
+| Gate 4 Brand Lock | roles confirmed + one test asset + audit verdict | H3 roles + H1 (asset exists, verdict token) | `Test-Approval -Gate Gate4`, `Test-AuditVerdict` |
+| Audit | verdict ∈ {APPROVED, CORRECTION REQUIRED, REJECT AND REGENERATE}; scale only on APPROVED | H1 token + H2 rubric quality | `Test-AuditVerdict` + judge |
+| Refine-vs-Reject | classification follows the trigger lists; restart isolation honored | H2 prompt | judge |
+| Stage 11 review | checklist + M0 predictions per scaled thread | H2 checklist + H1 `Test-M0Coverage` | mixed |
+| Bonus E M0 | every scaled thread has prediction + kill + reposition conditions | H1 | `Test-M0Coverage` |
+
+### bridge/ gates (contracts + orchestrations)
+
+| Gate | Check | Tier | Hook |
+|---|---|---|---|
+| One audience list | brief imports S5B table (no second list) | H1 (import marker) + H2 | `Test-NoFork` |
+| Block A/B completeness | required columns present and non-empty per row | H1 CSV schema | `Test-Blocks` |
+| Thread-per-group | every non-retired group has ≥1 thread row or explicit `unaddressed` | H1 | `Test-Threads` |
+| Wiring marks | carry-over/new, unaddressed, EVIDENCE values from closed enum | H1 | `Test-Blocks` |
+| M-file chain | M0→M1→M2→M3 present in order before M4 writes | H1 existence | `Test-MChain` |
+
+## Trigger points (when the runner fires)
+
+| Transition | Fire |
+|---|---|
+| Leaving S0 / S1 | `Test-Header`, honesty (S0), theme words |
+| Leaving S2 / S3 | counts, IDs, bullets, lenses, $0 flags |
+| Leaving S4 / S5A | counts, IDs, fit-ban, physical, verb legality, rows, NOT-fit |
+| Leaving S5B | counts, S5B, honesty; emit Blocks |
+| Brand Gate 1–4, Generation Plan, scale, launch | approvals, gen-plan, audit verdict, modules, M0 coverage |
+| M-transitions | M-chain, thread coverage |
+
+Wire into whatever runner you use (agent pre-transition checklist, CI on `runs/`, or
+manual `./hooks/Validate-Gates.ps1 -RunDir runs/<id> -Stage <stage>`). H2 prompts live
+in `JUDGE-PROMPTS.md`; H3 log format: one line per approval,
+`H3 <gate> APPROVED <yyyy-mm-dd> <who>`.
+
+## Hook-layer file conventions (run artifacts the H1 validators read)
+
+`runs/<id>/icp/S0_SPEC.md`, `S2_SITUATIONS.csv/.md`, `S3_STAKES.csv`, `S4_PRODUCTS.csv`,
+`S5A_FIT.csv`, `S5B_GROUPS.csv` (with `GRP-ID` + non-empty `BRIEF` columns),
+`NOTFIT.md`; `runs/<id>/bridge/THREADS.csv` (`GRP-ID`, `STATUS`), `M_PREDICTIONS.csv`
+(`PRED-ID`, `GRP-ID`, `KILL_CONDITION`, `REPOSITION_CONDITION`); `runs/<id>/GATES.log`.
+Headers follow the skill schemas (`icp/references/S2_situations.md` etc.).

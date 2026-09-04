@@ -1,0 +1,4 @@
+S-ID,direct_ticket_typical_USD,failure_cost_max_USD,tier_decade,tier_narrative,priceless_flag,price_note,anchor_source
+S-0001,45,200,T11,T7 nominal,,,test-anchor-1
+S-0002,2500,50000,T9,T5 serious,,PPP adjusted,anchor-2
+S-0003,0,0,T13,T8 $0/priceless,X,priceless: grief record,anchor-3

@@ -1,0 +1,4 @@
+# Run workspaces stay local: the repo holds the system, not market data.
+*
+!.gitignore
+!README.md

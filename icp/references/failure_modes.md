@@ -1,0 +1,21 @@
+# Failure modes (observed in QMD vs AIDE runs) and cures
+
+- S0-1 Merge flood — 14k-line verbatim merge as normative spec. Cure: S0 cap plus Appendix_Raw.
+- S0-2 Role blur — QMD as product vs subsystem unstated. Cure: optional platform-role (absent is pass).
+- S0-4 Hard quotas — 300/50/10 baked in. Cure: line-cap/K-rank/K-fit declared in S0 header.
+- S0-3 Unlogged run — no model/temp/date. Cure: header stamp gate.
+- S1-1 Grammar slip — `Decisions making`. Cure: S1 grammar gate.
+- S1-2 Bare word — theme with no worksheet/battery. Cure: S1 worksheet requirement.
+- S1-3 Broad-only — sharp qualifier dropped. Cure: broad+sharp fork.
+- S2-1 Uncountable — comma paragraphs, no IDs. Cure: S-ID plus bulleted render.
+- S2-3 Endless volumes — `continue` sprawl. Cure: one-file cap.
+- S3-1 Lens swap — direct vs failure silently exchanged. Cure: both columns with header definitions.
+- S3-4 Silent $0 — elections/peace as bare $0. Cure: $0 flag rule.
+- S4-1 4a/4b fork — products vs services wording drift. Cure: 4b standard.
+- S4-5 Early fit — (a)/(b) in the catalog. Cure: S4 fit ban.
+- S5-1 Missing bodies — profiles without content. Cure: S5B body-count gate.
+- S5-4 Triple mapping — same 24 categories rendered three times. Cure: single-pass plus redundancy gate.
+- X-1 Dangling joins — ranks, leaves and fits that reference nothing. Cure: ID gate.
+- X-2 Name chaos — STEP0/STEP-0, ADIE/AIDE, spaces, (3), txt/md mix, MAREKTING. Cure: naming convention in SKILL.md.
+- V14-1 Market leak — `ICP/marketing/ACV/PLG/BOM/shelf` in core schemas. Cure: core nouns group/brief/landing-place; market terms live in O-GTM overlay.
+- V14-2 Regime leak — bare `UL/CE/FDA` as universal certs. Cure: required-certification names its regime per overlay registry.

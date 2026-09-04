@@ -1,0 +1,4 @@
+S-ID,level,domain,sector_tags,knowledge_need,decision_moment,action_moment,spec_link
+S-0001,A1,home,,dose log,whether to refill,N/A: informational,§2
+SX-0002,B2,work,bogus-tag,N/A,N/A,N/A: nothing here,§4
+S-0003,A7,home,,rationale,whether to switch,N/A: informational,§2

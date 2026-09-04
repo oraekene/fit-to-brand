@@ -1,0 +1,3 @@
+P-ID,category,type,form,examples,tier_span,domain,S-IDs_covered,unit_economics,channel,warranty_reg
+P-0001,refill apps,product,digital,AppOne (a) full swap pick,T10-T11,home,S-0001,N/A,direct,N/A
+P-0002,torque tools,product,physical,ToolCo 18V,T9-T10,work,S-0002,,retail,

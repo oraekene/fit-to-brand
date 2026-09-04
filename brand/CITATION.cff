@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this workflow, please cite it using the metadata below."
+title: "Brand System Skill (provider-agnostic; orig. Lovart Brand System Skill)"
+type: software
+version: 0.3.0-agnostic
+date-released: 2026-09-04
+authors:
+  - family-names: Mushich
+    given-names: Amir
+    website: "https://x.com/AmirMushich"
+license: CC-BY-4.0
+repository-code: "https://github.com/amirmushichge/lovart-brand-system-skill"
+url: "https://github.com/amirmushichge/lovart-brand-system-skill"
+abstract: "An agent-guided creative-direction workflow for turning one visual reference into a connected brand system with any capable image/video generation provider (Lovart, Midjourney, GPT-image, Firefly, SD/ComfyUI, Runway/Pika/Kling/Sora/Luma, Figma/Canva AI, others)."
+keywords:
+  - agent skill
+  - branding
+  - brand system
+  - creative direction
+  - Brand Lock
+  - generative AI
+  - provider-agnostic

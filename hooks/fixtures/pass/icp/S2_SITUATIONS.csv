@@ -1,0 +1,4 @@
+S-ID,level,domain,sector_tags,knowledge_need,decision_moment,action_moment,spec_link
+S-0001,A1,home,,dose log for refill,whether to refill now,N/A: purely informational,§2
+S-0002,B2,work,SEC-BUILT,N/A: embodied task,negotiating scope with client,torque-down to spec,§4
+S-0003,A7,home,,rationale for past bill,whether to switch provider,N/A: purely informational,§2
