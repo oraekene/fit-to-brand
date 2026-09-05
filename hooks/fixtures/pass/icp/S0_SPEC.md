@@ -1,4 +1,4 @@
-project | run-mode single | overlay O-GTM | line-cap 300 | K-rank 50 | K-fit 10 | model test | temp 0 | date 2026-09-04 | spec-sha abc123 | naming: n/a: hook fixture tests gates not naming | N/A until S2
+project | run-mode single | form digital | overlay O-GTM | line-cap 300 | K-rank 50 | K-fit 10 | model test | temp 0 | date 2026-09-04 | spec-sha abc123 | naming: n/a: hook fixture tests gates not naming | N/A until S2
 
 # Problem
 Test problem.

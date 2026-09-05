@@ -97,7 +97,10 @@ orchestration. Agent fires Q-sets via the question tool (≤3 per exchange, reco
 first, explicit defaults); answers land in `runs/<id>/PARAMS.log` as
 `Q<id> = <value> | <date> | <who>` plus write-through to the owning artifact.
 `Test-Params` blocks the transition when required keys are missing: S0 needs
-Q0.0–Q0.5 + Q1.1–Q1.4 + QN.0; S5B needs Q5.1; BRAND needs Q10.1; M needs Q13.1 + QRP.1.
+Q0.0–Q0.8 + Q1.1–Q1.4 + QN.0; S5B needs Q5.1; BRAND needs Q10.1; M needs Q13.1 + QRP.1.
+`Test-Sources` (E-sources, S0 exit-lock) blocks when `SOURCES.log` is missing, has
+zero `S<nn> =` lines, carries a bad family tag, or the S0 `spec-sha` does not resolve
+in the manifest.
 QN.3 (name pick) is required at phase-6 entry when S0 declares naming required.
 A phase that exits on assumptions instead of answers is red, same as any gate.
 
@@ -119,5 +122,6 @@ and CI catches violations at land time.
 `S5A_FIT.csv`, `S5B_GROUPS.csv` (with `GRP-ID` + non-empty `BRIEF` columns),
 `NOTFIT.md`; `runs/<id>/bridge/THREADS.csv` (`GRP-ID`, `STATUS`), `M_PREDICTIONS.csv`
 (`PRED-ID`, `GRP-ID`, `KILL_CONDITION`, `REPOSITION_CONDITION`); `runs/<id>/GATES.log`;
-`runs/<id>/PARAMS.log` (`Q<id> = <value> | <date> | <who> | src=<asked|batch|batch-deferred|default>` per `bridge/QUESTIONNAIRES.md`).
+`runs/<id>/PARAMS.log` (`Q<id> = <value> | <date> | <who> | src=<asked|batch|batch-deferred|default>` per `bridge/QUESTIONNAIRES.md`);
+`runs/<id>/SOURCES.log` (`S<nn> = <label> | <family F1-F6> | <path-or-url> | <sha-or-n/a> | <date> | <who> | src=<asked|dropped|batch|default>` per Q0.7).
 Headers follow the skill schemas (`icp/references/S2_situations.md` etc.).

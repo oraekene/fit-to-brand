@@ -39,7 +39,7 @@ Write-through targets are listed per Q-set.
 
 - **phased (default):** Q-sets fire at their phase per the elicitation spine tables.
   Maximum context per question, maximum interruptions.
-- **batch-upfront:** two rounds now, then quiet. **R1** (no prerequisites): Q0.1–Q0.5,
+- **batch-upfront:** two rounds now, then quiet. **R1** (no prerequisites): Q0.1–Q0.8,
   Q1.1, Q1.3, Q1.4, Q3.1, Q4.2, Q4.3, Q10.1, QR.1 (rebrands), QC.1 (campaigns).
   **R2** (depends on R1): Q1.2 custom-overlay definition (iff custom), Q3.2 sectors,
   Q4.1 wedge rank (iff category), Q13.1 thresholds (proposed per motion, confirmed at
@@ -49,11 +49,13 @@ Write-through targets are listed per Q-set.
   challenged at its phase (a short confirm, not a re-ask). Q14.2 is never
   deferred-defaulted: kills are always asked live.
 - **defaults:** every Q with a stated default auto-records `src=default`. Still asked
-  live (no default exists): Q0.5 (budget cap), QR.1 (equity sort — judgment, no
-  default), Q14.2 (kill/launch-hold confirms). Q1.4 defaults to `TBD`, Q4.3 to
-  `none-known`, QC.1 to its pre-checks — flagged or confirmed at phase as usual.
+  live (no default exists): Q0.5 (budget cap), Q0.6 (subject form — 1 click, no
+  default), QR.1 (equity sort — judgment, no default), Q14.2 (kill/launch-hold
+  confirms). Q0.7 defaults to `accept-pack`, Q0.8 defaults to `none-known`, Q1.4
+  defaults to `TBD`, Q4.3 to `none-known`, QC.1 to its pre-checks — flagged or
+  confirmed at phase as usual.
 
-## Q0 — Setup (before S0; two exchanges: Q0.1–0.3, then Q0.4–0.5)
+## Q0 — Setup (before S0; three exchanges: Q0.1–0.3, then Q0.4–0.5, then Q0.6–0.8)
 
 - **Q0.1 image generator?** Options: Lovart-native (Recommended if running in Lovart) /
   GPT-image-class / Midjourney + LLM direction / Adobe Firefly / local SD-Comfy /
@@ -67,7 +69,48 @@ Write-through targets are listed per Q-set.
 - **Q0.4 font source?** Google Fonts (Recommended default) / Adobe Fonts (license
   confirmed?) / commercial foundry (which?) / system stack. → Approved Font Source.
 - **Q0.5 cost unit + cap?** credits / tokens / API-$ / render-minutes / seat-time +
-  a number. *Why: every Generation Plan prices against this.* No default — must answer.
+  a number. *Why: every Generation Plan prices against this.* No doc default —
+  presets in `bridge/PROFILES.md` carry default caps (`quickstart -Preset` seeds
+  yours with `src=asked`); manual runs must answer.
+
+- **Q0.6 subject form?** digital = software/app/SaaS, `(a)` is a code swap
+  (Recommended if repo/docs/site exist) / physical = device/tool/appliance/kit,
+  `(a)` is a full-SKU swap / hybrid = device+software, both lenses / human-service
+  = install/maintenance/coaching/mediation, `(a)` is a service swap. *Why: picks the
+  5-item context pack and fixes which S4 verbs are legal (software-only `b-ING/
+  b-FACE/b-SRC` never attach to pure-physical).* No default — 1 click. → S0 header
+  `form:` + `SOURCES.log` pack selector.
+- **Q0.7 context pack — accept the 5-item pack?** Accept pack (Recommended) / swap
+  one source / batch-upload all now. *Why: S0 can only cite what it was given — a
+  thin spec propagates as missing `spec_link` (S2) and missing `spec cite` (S5A).*
+  Packs by form × run-mode (show only the matching pack, never all 280):
+  digital-single: repo/README + docs/wiki + site+pricing + 1 user-voice (tickets OR
+  Slack/Teams/Discord OR Gong/calls) + claims/certs if any; physical-single:
+  BOM/datasheet + manual/warranty + catalog/price sheet + 1 field-voice (reviews OR
+  RMAs) + cert regime if any; human-service-single: SOP/menu/rate card + 1
+  contract/SOW + 1 voice (tickets/calls/reviews) + staffing/training iff delivery
+  gap; hybrid: digital pack + BOM/manual; category: 3–5 competitor feature+pricing
+  pages + 1 comparison matrix + 1 review source (G2 OR Amazon OR App Store) +
+  analyst/teardown iff wedge disputed; company/org as subject: charter/deck + org
+  chart + 1 financial + 1 binding constraint. Personal data (Gmail/Slack/notes/chat
+  histories): manual export drop to Inbox first, live connector later — never block
+  S0 on OAuth. → `runs/<id>/SOURCES.log` manifest (schema below); `spec-sha`
+  resolves to it.
+- **Q0.8 anything binding?** none-known (Recommended default) / cert-regime [name
+  it: UL/CE/FDA/DOT, ROE/LOAC, curriculum, customary] / regulated-claim [name it].
+  `TBD` legal, stays flagged. *Why: seeds Out-of-Scope + NOT-fit before the agent
+  writes them; safety-critical fit without a named regime is red.* → S0
+  Out-of-Scope + NOTFIT.md seed.
+
+**SOURCES.log format** (one line per source, H1-readable):
+`S<nn> = <label> | <family F1-F6> | <path-or-url> | <sha256-or-n/a> | <yyyy-mm-dd> | <who> | src=<asked|dropped|batch|default>` —
+e.g. `S01 = repo-tree | F1 | github.com/org/repo@a1b2c3 | sha:a1b2c3 | 2026-09-04 | adaeze | src=dropped`.
+Families: F1 what-it-is (code/technical), F2 what-you-promise (site/marketing),
+F3 what-you-agreed (docs/commercial/operational), F4 what-users-say
+(SaaS/comms/personal), F5 what-binds-you (org/legal/financial), F6 category-market.
+H1 reads only the `S<nn> =` head, so provenance never breaks hooks. Minimum 1 line;
+recommended 5 (the accepted pack). `spec-sha` in the S0 header MUST match the
+manifest hash or the short-hash of the manifest file — dangling `spec-sha` is red.
 
 ## Q1 — S0 freeze (before leaving S0)
 

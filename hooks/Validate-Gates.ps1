@@ -37,12 +37,12 @@ $log    = Join-Path $RunDir 'GATES.log'
 
 function Stage-On($s) { return ($Stage -eq 'ALL') -or ($Stage -eq $s) }
 
-# ---------- G1 header + G6 S0 honesty ----------
+# ---------- G1 header + G6 S0 honesty + E-SOURCES manifest ----------
 if (Stage-On 'S0') {
   $s0 = Join-Path $icp 'S0_SPEC.md'
   if (!(Test-Path -LiteralPath $s0)) { Say $false 'G1-header' "missing $s0" }
   else {
-    $head = (Get-Content -LiteralPath $s0 -TotalCount 5) -join "`n"
+    $head = (Get-Content -LiteralPath $s0 -TotalCount 8) -join "`n"
     $need = @('project', 'run-mode', 'overlay', 'model', 'temp', 'date', 'spec-sha')
     $missing = @($need | Where-Object { $head -notmatch [regex]::Escape($_) })
     Say ($missing.Count -eq 0) 'G1-header' "header fields present$($missing.Count ? " (missing: $($missing -join ','))" : '')"
@@ -54,6 +54,23 @@ if (Stage-On 'S0') {
       $oosOk = (@($rest).Count -gt 0)
     }
     Say $oosOk 'G6-honesty' 'Out-of-Scope section non-empty'
+    # SOURCES.log manifest: S0 spec-sha must resolve to a logged source pack
+    $slog = Join-Path $RunDir 'SOURCES.log'
+    if (!(Test-Path -LiteralPath $slog)) { Say $false 'E-sources' 'missing SOURCES.log (Q0.7 pack manifest; see bridge/QUESTIONNAIRES.md)' }
+    else {
+      $slines = @(Get-Content -LiteralPath $slog | Where-Object { $_ -match '^\s*S\d+\s*=' })
+      Say ($slines.Count -ge 1) 'E-sources' "SOURCES.log has $($slines.Count) source line(s) (min 1, recommended 5)"
+      $badfam = @($slines | Where-Object { $_ -notmatch '\bF[1-6]\b' })
+      Say ($badfam.Count -eq 0) 'E-sources' "every source line carries a family tag F1-F6$($badfam.Count ? " ($($badfam.Count) bad)" : '')"
+      $m = [regex]::Match($head, 'spec-sha\s+([A-Za-z0-9_-]+)')
+      $sha = $m.Success ? $m.Groups[1].Value : ''
+      $shaOk = ($sha -ne '' -and $sha -notmatch '^(TODO|TBD|XXX)$')
+      Say $shaOk 'E-sources' "S0 spec-sha stamped and non-placeholder$($shaOk ? " ($sha)" : '')"
+      if ($shaOk) {
+        $sraw = Get-Content -LiteralPath $slog -Raw
+        Say ($sraw -match [regex]::Escape($sha)) 'E-sources' "spec-sha resolves in SOURCES.log (dangling spec-sha is red)"
+      }
+    }
   }
 }
 
@@ -214,7 +231,7 @@ function Need-Params($gate, $keys, $why) {
   $missing = @($keys | Where-Object { $answered -notcontains $_ })
   Say ($missing.Count -eq 0) $gate "$why$($missing.Count ? " (missing: $($missing -join ','))" : '')"
 }
-if (Stage-On 'S0')  { Need-Params 'E-ask' @('Q0.0','Q0.1','Q0.2','Q0.3','Q0.4','Q0.5','Q1.1','Q1.2','Q1.3','Q1.4','QN.0') 'S0 elicitation complete (mode + profile + run-mode + overlay + quotas + claims seed + working title)' }
+if (Stage-On 'S0')  { Need-Params 'E-ask' @('Q0.0','Q0.1','Q0.2','Q0.3','Q0.4','Q0.5','Q0.6','Q0.7','Q0.8','Q1.1','Q1.2','Q1.3','Q1.4','QN.0') 'S0 elicitation complete (mode + profile + form + pack + binding + run-mode + overlay + quotas + claims seed + working title)' }
 if (Stage-On 'S5B') { Need-Params 'E-ask' @('Q5.1') 'grouping check asked before briefs lock' }
 if (Stage-On 'BRAND') { Need-Params 'E-ask' @('Q10.1') 'guideline modules chosen by user' }
 if (Stage-On 'M')   { Need-Params 'E-ask' @('Q13.1') 'kill/reposition thresholds accepted per thread' }

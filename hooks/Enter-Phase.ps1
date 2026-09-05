@@ -26,6 +26,9 @@ $prompts = @{
   'Q0.3'  = 'Layout/export finisher? Figma (rec) / Illustrator / Canva / code-SVG / None-conceptual-only.'
   'Q0.4'  = 'Font source? Google Fonts (rec) / Adobe (license?) / commercial foundry / system stack.'
   'Q0.5'  = 'Cost unit + cap? credits/tokens/API-$/render-min + number. No default — must answer.'
+  'Q0.6'  = 'Subject form? digital (rec if repo/docs/site) / physical / hybrid / human-service. No default — 1 click.'
+  'Q0.7'  = 'Context pack? accept 5-item pack (rec) / swap one / batch-upload all. Default accept-pack.'
+  'Q0.8'  = 'Anything binding? none-known (rec) / cert-regime [name it] / regulated-claim [name it].'
   'Q1.1'  = 'Run-mode? single = full swap (rec for launches) / category = share-shift with wedge.'
   'Q1.2'  = 'Overlay? O-GTM (rec) / O-OPS / O-EDU / O-SUBSISTENCE / custom (+define registry).'
   'Q1.3'  = 'Quotas 300/50/10? accept (rec) / tighten / loosen (numbers).'
@@ -66,7 +69,7 @@ $prompts = @{
 
 # phase -> exit-keys (joint numbering; rebrand adds QR keys; campaign has own order)
 $joint = @(
-  @{ n = 0;  keys = @('Q0.0','Q0.1','Q0.2','Q0.3','Q0.4','Q0.5'); extraRebrand = @('QR.1') },
+  @{ n = 0;  keys = @('Q0.0','Q0.1','Q0.2','Q0.3','Q0.4','Q0.5','Q0.6','Q0.7','Q0.8'); extraRebrand = @('QR.1') },
   @{ n = 1;  keys = @('Q1.1','Q1.2','Q1.3','Q1.4'); extraRebrand = @() },
   @{ n = 2;  keys = @('Q3.1','Q3.3'); extraRebrand = @() },
   @{ n = 3;  keys = @('Q4.2','Q4.3'); extraRebrand = @() },

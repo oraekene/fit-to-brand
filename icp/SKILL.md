@@ -12,9 +12,9 @@ Leading words: **fit** (core), **icp** (GTM overlay default). Every artifact, ID
 ## Steps
 
 ### 0. Freeze the spec
-Produce `S0_SPEC.md` (normative, within line-cap default 300: Problem / Solution / User Stories / Implementation / Testing / Out-of-Scope / Notes) plus `Appendix_Raw.md` for any merged source dumps. Declare `run-mode: single|category` and `overlay` (default O-GTM); declare `platform-role` only when the subject sits in a platform (omit for soap, tractors, haircuts). Stamp the header with quotas.
-For the template and merge rule see [S0 reference](references/S0_spec.md).
-Done when: Out-of-Scope exists, run-mode and overlay are declared, normative body is within line-cap, header is stamped.
+Produce `S0_SPEC.md` (normative, within line-cap default 300: Problem / Solution / User Stories / Implementation / Testing / Out-of-Scope / Notes) plus `Appendix_Raw.md` for any merged source dumps. Ask Q0.6 form (`digital|physical|hybrid|human-service`), Q0.7 context pack (min 1, recommended 5 → `SOURCES.log`), Q0.8 binding before writing — halt and ask when a section has no logged source, never invent. Declare `run-mode: single|category`, `form` and `overlay` (default O-GTM); declare `platform-role` only when the subject sits in a platform (omit for soap, tractors, haircuts). Stamp the header with quotas; `spec-sha` must resolve in `SOURCES.log`.
+For the template, 7-family inputs, format rule, subject-type mapping and halt-and-ask see [S0 reference](references/S0_spec.md).
+Done when: Out-of-Scope exists, run-mode + form + overlay are declared, normative body is within line-cap, header is stamped, spec-sha resolves.
 
 ### 1. Distill the theme
 Run RTD Levels 0-6 and save the worksheet. Keep both `theme_broad` and `theme_sharp` on a fork; tag every downstream run with which one it uses.

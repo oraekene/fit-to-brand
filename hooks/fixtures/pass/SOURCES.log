@@ -1,0 +1,5 @@
+S01 = repo-tree | F1 | github.com/org/repo@abc123 | sha:abc123 | 2026-09-04 | tester | src=dropped
+S02 = docs-wiki | F1 | docs/site-copy | sha:def456 | 2026-09-04 | tester | src=dropped
+S03 = pricing-page | F2 | site.com/pricing | sha:n/a | 2026-09-04 | tester | src=asked
+S04 = support-tickets | F4 | zendesk export | sha:n/a | 2026-09-04 | tester | src=dropped
+S05 = claims-seed | F5 | claims registry | sha:abc123 | 2026-09-04 | tester | src=asked

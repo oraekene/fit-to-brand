@@ -1,4 +1,4 @@
-project SunJar SHS-200 | run-mode single | overlay O-GTM | line-cap 300 | K-rank 50 | K-fit 10 | model illustrator | temp 0 | date 2026-09-04 | spec-sha sunjar001 | naming: required | N 6
+project SunJar SHS-200 | run-mode single | form physical | overlay O-GTM | line-cap 300 | K-rank 50 | K-fit 10 | model illustrator | temp 0 | date 2026-09-04 | spec-sha sunjar001 | naming: required | N 6
 
 # 1. Problem Statement
 Off-grid households and roadside shops burn kerosene and queue at phone-charging kiosks for light and power after dark.

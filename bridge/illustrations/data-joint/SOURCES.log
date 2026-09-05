@@ -1,0 +1,5 @@
+S01 = hub firmware README | F1 | repo sunjar-shs200@sunjar001 | sha:sunjar001 | 2026-09-04 | adaeze | src=dropped
+S02 = install manual plus warranty | F3 | docs install-manual | sha:n/a | 2026-09-04 | adaeze | src=dropped
+S03 = agent price sheet | F2 | site pricing-sheet | sha:n/a | 2026-09-04 | adaeze | src=dropped
+S04 = stall-trader field interviews | F4 | field notes | sha:n/a | 2026-09-04 | adaeze | src=asked
+S05 = wiring-code cert filing | F5 | cert national-wiring-code plus CE | sha:sunjar001 | 2026-09-04 | adaeze | src=asked

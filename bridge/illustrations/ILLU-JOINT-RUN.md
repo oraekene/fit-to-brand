@@ -19,7 +19,9 @@ Run ID `sunjar-001`. Folders `runs/sunjar-001/{icp,brand,bridge}`. Naming fixed:
 `S-0001`, `P-0001`, `GRP-ID`, `PRED-ID`. Provider Profile declared (image: GPT-image
 class generator; video: Runway; layout: Figma for type finishing; fonts: Google Fonts;
 cost unit: USD + staff minutes; capability flags: no exact text-in-image → fallback is
-finish all pack copy in Figma, recorded in every Generation Plan).
+finish all pack copy in Figma, recorded in every Generation Plan). Subject form
+`physical` (Q0.6); context pack accepted (Q0.7, 5 sources in `SOURCES.log`);
+binding `cert-regime national wiring code plus CE` (Q0.8).
 
 ## Phase 1 — S0 freeze → S1 fork
 
@@ -185,13 +187,17 @@ amended sources; cores untouched.
 
 ## Hooks (real output, `hook-joint.txt`)
 
-Full H1 run green — 37/37, including the-X exclusion that initially tripped on the
+Full H1 run green — 41/41, including the-X exclusion that initially tripped on the
 numbered `# 6. Out-of-Scope` heading (validator now accepts the skill's own numbered
 template; the gate caught a real shape mismatch before any downstream stage ran):
 
 ```text
 PASS: [G1-header] header fields present
 PASS: [G6-honesty] Out-of-Scope section non-empty
+PASS: [E-sources] SOURCES.log has 5 source line(s) (min 1, recommended 5)
+PASS: [E-sources] every source line carries a family tag F1-F6
+PASS: [E-sources] S0 spec-sha stamped and non-placeholder (sunjar001)
+PASS: [E-sources] spec-sha resolves in SOURCES.log (dangling spec-sha is red)
 PASS: [G2-count] S2 rows=6 S3 rows=6 (must match, >0)
 PASS: [G3-ids] all S-IDs match S-0001 shape
 PASS: [G3-ids] S-IDs unique
@@ -222,7 +228,7 @@ PASS: [B-threads] every group has a thread row or explicit unaddressed
 PASS: [B-m0] every prediction has kill + reposition conditions (1 rows)
 PASS: [B-m0] every scaled thread has an M0 row
 PASS: [E-ask] report brief (QRP.1) recorded for this flight
-PASS: [E-ask] S0 elicitation complete (mode + profile + run-mode + overlay + quotas + claims seed + working title)
+PASS: [E-ask] S0 elicitation complete (mode + profile + form + pack + binding + run-mode + overlay + quotas + claims seed + working title)
 PASS: [E-ask] grouping check asked before briefs lock
 PASS: [E-ask] guideline modules chosen by user
 PASS: [E-ask] kill/reposition thresholds accepted per thread
