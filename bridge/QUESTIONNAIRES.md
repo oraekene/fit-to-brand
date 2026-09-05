@@ -73,11 +73,14 @@ Write-through targets are listed per Q-set.
 - **Q0.1m which picture model do we use?** Pick the recommended model first
   (free to use while your key has no credit). Skipped if you do it by hand.
   Why this matters: the model sets the picture quality and the price.
-- **Q0.2 video/motion provider?** Same-stack-as-Q0.1 (Recommended: motion
-  follows the image provider+model) / registry id whose `video` ≠ `none` /
-  None → storyboard fallback / `manual`. Default: same-stack. → profile.
-  **Q0.2m video model?** Asked iff Q0.2 names a registry id other than the
-  Q0.1 row (row static default recommended first).
+- **Q0.2 which video service do we use?** Use the same service as for
+  pictures (recommended) / pick a different service from the service list /
+  still pictures only / do it by hand. Why this matters: this choice sets
+  the cost, the look, and the backup plan for every video in the run.
+- **Q0.2m which video model do we use?** Pick the recommended model first
+  (free to use while your key has no credit). Skipped unless you pick a
+  different video service. Why this matters: the model sets the video
+  quality and the price.
 - **Q0.3 layout/export finisher?** Figma (Recommended) / Illustrator / Canva /
   code-SVG / None-conceptual-only. *Why: whoever finishes type owns text defects.*
   Default: Figma. → profile.
