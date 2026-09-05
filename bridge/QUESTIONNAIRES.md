@@ -52,7 +52,7 @@ Write-through targets are listed per Q-set.
   pick, grouping and buying checks, import and direction approvals, font
   and work-plan approvals, review and locked-design approvals,
   product-version and final checks, packaging and signoff, result reviews.
-  Each gets the recommended answer now and you approve or change it at its
+  Each gets the recommended answer and you approve or change it at its
   step. I never pre-answer stop decisions or launch holds. I always ask
   those live.
 - **defaults:** every question with a recommended answer takes it. I still

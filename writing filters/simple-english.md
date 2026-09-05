@@ -1,10 +1,14 @@
 # Simple-English filter — user-shown text only
 
 Adapted from AminBlg/SimpleEnglish (MIT; agent skill for ASD-STE100 plain
-English, v2.0.1). Only its public rules are used here. Full ASD compliance
-needs the official copyrighted dictionary, so this file pairs the public
-rules with our own term map below, and every question gets the CHECK pass
-before it ships.
+English, v2.0.1). Only its public rules are used here. The official
+dictionary (ASD-STE100 Issue 9, 2025-01-15) is free to download and use
+(free at asd-ste100.org), and it is the reference for every CHECK below —
+but its text is not reproduced here, because its copyright page permits use
+while prohibiting reproduction and publication without ASD written
+authority. This file therefore paraphrases rules and carries only our own
+term map, with the official source named. The SimpleEnglish skill takes the
+same position (it ships rulings, never dictionary content).
 
 ## Scope
 
@@ -63,6 +67,47 @@ enterprise → sales-led. trademark, domain, handle checks → name checks.
 ID codes (S-0001, GRP-01, PRED-01) → never shown; use the names instead.
 Log and state files (PARAMS, GATES, STATE, SOURCES, spec-sha) → never shown.
 Question numbers (Q0.0) stay: they are the stable handles users answer with.
+
+## Dictionary rulings applied (from Issue 9, used not reproduced)
+
+The project copy of ASD-STE100 Issue 9 (Part 1: 53 writing rules; Part 2:
+controlled dictionary) is read-only reference in the repo root. Nothing
+from it is copied into this file. These paraphrased rulings drive every
+rewrite:
+
+1. check, verify, confirm, ensure as verbs → make sure that (a state),
+   examine (look for faults), measure (get a value). check and test are
+   nouns only (do a check, do a test). help is a verb only.
+2. follow means come after only. For instructions use obey.
+3. acceptable is not approved. Give the limit, or use permitted. complete
+   as an adjective is not approved. Use completed.
+4. option is not approved. Use alternative, or can. single is not
+   approved. Use one. main is not approved. Use primary. portion is not
+   approved. Use part. people is not approved. Use person or personnel.
+   old is not approved. Use remaining, used, or expired.
+5. run is not approved. Use operate. execute is not approved. Use do.
+   perform is not approved. Use do. repeat is not approved. Use do again.
+6. display, render, present as verbs are not approved. Use show.
+7. avoid is not approved. Use prevent. reach is not approved. Use get.
+   insert is not approved. Use put. press is not approved. Use push.
+   secure is not approved. Use attach. rotate is not approved. Use turn.
+   fit as a verb is not approved. Use install.
+8. shall and should are not approved. Use must. may is not approved. Use
+   can. need as a verb is not approved. Use necessary. have to is not
+   approved. Use an action verb in command form. required is not approved.
+   Use necessary. since meaning because is not approved. Use because.
+   however is not approved. Use but. therefore is not approved. Use thus
+   or as a result. further is not approved. Use more. now is not approved.
+   Use at this time, or delete it. any is not approved. Delete it or
+   restructure. over is not approved. Use above, on, or along. under is
+   not approved. Use below, in, or less than. alternate is not approved.
+   Use alternative. using is not approved. Use use, or with.
+8. One term per item (Rule 1.11): once the map picks a plain word, that
+   word is used everywhere. No synonyms beside it.
+9. Noun stacks hold three words at most (Rule 2.1). Break longer ones
+   with a preposition.
+10. No regional, slang, or jargon terms (Rule 1.10). Our map is the
+    project-local enforcement of this rule.
 
 ## CHECK pass (every rewritten question, before it ships)
 
