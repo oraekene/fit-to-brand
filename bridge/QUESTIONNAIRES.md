@@ -81,9 +81,10 @@ Write-through targets are listed per Q-set.
   (free to use while your key has no credit). Skipped unless you pick a
   different video service. Why this matters: the model sets the video
   quality and the price.
-- **Q0.3 layout/export finisher?** Figma (Recommended) / Illustrator / Canva /
-  code-SVG / None-conceptual-only. *Why: whoever finishes type owns text defects.*
-  Default: Figma. → profile.
+- **Q0.3 which tool finishes the layout?** Pick Figma (recommended) /
+  Illustrator / Canva / make it with code / idea only with no finished
+  file. Why this matters: the tool that finishes the layout fixes the text
+  faults in every finished file.
 - **Q0.4 font source?** Google Fonts (Recommended default) / Adobe Fonts (license
   confirmed?) / commercial foundry (which?) / system stack. → Approved Font Source.
 - **Q0.5 cost unit + cap?** credits / tokens / API-$ / render-minutes / seat-time +
