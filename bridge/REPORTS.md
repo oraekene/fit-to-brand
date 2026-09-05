@@ -17,6 +17,8 @@ artifacts). A report that can't cite its line is a draft, not a report.
 | R-THREAD Campaign Plan | Phase 7 end (Stage 9 plan) | media / agents | Block A threads, briefs, formats | shape |
 | R-FLIGHT Readout | M3 per flight (phase 10) | owners per PRED-ID | M2_OBS, M3 decisions | beats |
 | R-FINAL System Report | Stage 11 + M0 (phase 9) | everyone | all of the above + M_PREDICTIONS | beats |
+| R-LEDGER Run Ledger | Phase 10 close (regenerable at any phase) | owners + auditors | PARAMS.log, GATES.log, artifact headers, H1 logs | shape |
+| R-MANUAL Brand Manual | Anchor lock (phase 6), refreshed at Stage 11 | team + designers + production | Anchor, Guidelines, Key-Visual, Blocks, Threads, NAMES pick | shape |
 | R-MIGRATION Rebrand Report | Rebrand Phase 6 (deprecation) | team + dealers | pairs, probes, deprecation list | beats |
 | R-DROP Expansion Report | Campaign Phase 5 | marketing | thread log, audits, M3 | beats |
 
@@ -127,8 +129,42 @@ budget explicitly, and the journey step must spend most of it:
   what happens next, by owner and date.
 - **R-FINAL:** the run's story (beats); market, system, measurement, open issues,
   next steps; M0 baseline pointer.
+- **R-LEDGER:** one section per phase (0–10): questions asked, answers given
+  (value + src + who + date), artifacts written, gate verdicts (H1/H2/H3),
+  decisions taken; open issues; next steps. Body is compiler-first
+  (`hooks/Build-Ledger.ps1` emits it from PARAMS.log + GATES.log + artifact
+  presence — never hand-typed from memory); the agent verifies it against the
+  artifacts and appends the teach-back footer.
+- **R-MANUAL:** the agency-style handoff book: cover (pick wordmark on the
+  rail), identity + promise in two sentences, logo lockups + clearspace +
+  minimum sizes + misuses, typography plates (families, roles, scale,
+  register samples), color plates (values, proportions, SKU logic), device
+  states (rail-plus-chip PASS/KILL/PLANNED), packaging zones, key visual +
+  cross-SKU validation, one thread sheet per group (headline, proofs, CTA,
+  formats), prohibited styles, production limitations, image credits (render
+  path + Figma finish). Missing renders ship as labeled placeholder boxes,
+  never broken images. Designed for the export chain ((d) below).
 - **R-MIGRATION:** old→new mapping; pairs verdict; probe numbers; deprecation dates.
 - **R-DROP:** what shipped per thread; audits survived; M verdicts; cost actuals.
 
 Sample execution: `bridge/illustrations/REPORT-SUNJAR-FINAL.md` (R-FINAL, standard
 depth, produced by running this pipeline on `data-joint/`).
+
+## (d) Export — Markdown to HTML to PDF (reports that carry images and finished type)
+
+Reports are authored in Markdown and stay Markdown in the run. When a report
+must show images or finished type (R-MANUAL always; any R-* on request), emit
+HTML + PDF alongside the `.md` via `hooks/Export-Report.ps1`:
+
+```powershell
+./hooks/Export-Report.ps1 -Path runs/<id>/bridge/R-FINAL-<slug>.md
+# writes R-FINAL-<slug>.html + R-FINAL-<slug>.pdf next to it
+```
+
+Chain: pandoc (Markdown → standalone HTML5, print stylesheet
+`hooks/export/print.css`) → Edge/Chromium headless `--print-to-pdf` (A4,
+background graphics on, no header/footer). Images resolve relative to the
+`.md`; missing renders must be labeled placeholder boxes in the source, never
+dangling `<img>` (a PDF with broken images is a draft, not a deliverable).
+Tool prerequisites live in `REQUIREMENTS.md`. The export is a render, not a
+rewrite: the `.md` stays the source of truth; re-export after any edit.

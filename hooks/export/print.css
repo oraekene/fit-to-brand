@@ -1,0 +1,80 @@
+/* print.css — fit-to-brand report export (A4 print, screen-readable too) */
+:root {
+  --paper: #fafaf6;
+  --ink: #1a1a18;
+  --signal: #1f7a3d;
+  --clay: #b3552f;
+  --mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+  --sans: Inter, "Segoe UI", Arial, sans-serif;
+}
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: #fff;
+  max-width: 170mm;
+  margin: 0 auto;
+  padding: 12mm;
+  font-size: 11pt;
+  line-height: 1.55;
+}
+h1, h2, h3 { line-height: 1.25; margin-top: 1.4em; }
+h1 {
+  font-size: 22pt;
+  border-bottom: 3px solid var(--ink);
+  padding-bottom: 6pt;
+}
+h1 + p { font-size: 10pt; color: #555; }
+h2 { font-size: 15pt; border-bottom: 1px solid #ccc; padding-bottom: 4pt; }
+h3 { font-size: 12pt; }
+code, pre { font-family: var(--mono); font-size: 9.5pt; }
+pre {
+  background: var(--paper);
+  border: 1px solid #ddd;
+  border-left: 3px solid var(--ink);
+  padding: 8pt;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+p code, li code, td code { background: var(--paper); padding: 1pt 3pt; }
+table { border-collapse: collapse; width: 100%; font-size: 9.5pt; margin: 1em 0; }
+th, td { border: 1px solid #bbb; padding: 5pt 6pt; text-align: left; vertical-align: top; }
+th { background: var(--paper); }
+blockquote {
+  border-left: 3px solid var(--signal);
+  margin-left: 0;
+  padding-left: 10pt;
+  color: #333;
+}
+img { max-width: 100%; height: auto; }
+figure { margin: 1em 0; text-align: center; }
+figcaption { font-size: 9pt; color: #555; }
+.img-slot {
+  border: 2px dashed #999;
+  background: var(--paper);
+  padding: 18pt 12pt;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 9.5pt;
+  color: #555;
+  margin: 1em 0;
+  break-inside: avoid;
+}
+.cover-rail { height: 6px; background: var(--ink); margin: 12pt 0; }
+.cover-chip {
+  display: inline-block;
+  border: 2px solid var(--signal);
+  color: var(--signal);
+  font-family: var(--mono);
+  font-size: 10pt;
+  padding: 2pt 10pt;
+  margin-top: 6pt;
+}
+.plate { break-inside: avoid; border: 1px solid #bbb; padding: 10pt; margin: 1em 0; }
+.swatch { display: inline-block; width: 34pt; height: 34pt; border: 1px solid #888; vertical-align: middle; margin-right: 6pt; }
+@page { size: A4; margin: 14mm; }
+@media print {
+  body { max-width: none; padding: 0; }
+  h1, h2, h3, .plate, figure, pre, table { break-inside: avoid; }
+  h1, h2 { break-after: avoid; }
+}
