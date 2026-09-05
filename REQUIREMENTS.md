@@ -28,5 +28,7 @@ logs, or git. Hooks check presence/validity and print PASS/FAIL only.
 | openai | `OPENAI_API_KEY` | platform.openai.com/api-keys | no free tier: auth-check only |
 | google-ai-studio | `GOOGLE_AI_STUDIO_KEY` | aistudio.google.com/apikey | text free tier; image shape verified at build |
 | fal | `FAL_KEY` | fal.ai dashboard | per-model billing; probe unsupported |
+| opencode-zen | `OPENCODE_ZEN_KEY` | opencode.ai/auth | free models rate-limited shared pool; paid per-token |
+| nvidia | `NVIDIA_API_KEY` | build.nvidia.com | catalog visible; inference needs entitled account |
 | ollama | — (keyless) | — | spend-safe by construction |
 | custom | user-named | user endpoint | per endpoint |
