@@ -8,9 +8,9 @@ defaults | notes`. `keyEnv` names the env var (values never appear anywhere).
 
 | id | aliases | baseURL | probe | keyEnv | images | video | defaults | notes |
 |---|---|---|---|---|---|---|---|---|
-| openrouter | or | https://openrouter.ai/api/v1 | /models | OPENROUTER_API_KEY | openai-images | bespoke:via-model | chat auto free; image :free image models | tests on `:free` models only while key has no credit; keys at openrouter.ai/keys |
+| openrouter | or | https://openrouter.ai/api/v1 | /models | OPENROUTER_API_KEY | openai-images | bespoke:via-model | chat auto free; image :free image models | tests on `:free` models only while key has no credit; keys at openrouter.ai/keys; verified 2026-09-05: auth + free text gen `provider-live` at cost 0; 0 free image models exist (images need credit); free shared pool 429s transient, retry |
 | openai | oa | https://api.openai.com/v1 | /models | OPENAI_API_KEY | openai-images | bespoke:sora | chat gpt-4o-mini; image gpt-image-1 | NO free tier: auth-check only, every generation is spend; keys at platform.openai.com/api-keys |
-| google-ai-studio | gai | https://generativelanguage.googleapis.com/v1beta/openai/ | /models | GOOGLE_AI_STUDIO_KEY | verify-at-build | verify-at-build | chat gemini-2.0-flash | free-tier text testable; image shape verified at build; keys at aistudio.google.com/apikey |
+| google-ai-studio | gai | https://generativelanguage.googleapis.com/v1beta/openai/ | /models | GOOGLE_AI_STUDIO_KEY | verify-at-build | verify-at-build | chat gemini-flash-latest | free-tier text testable (verified 2026-09-05: `provider-live` via gemini-flash-latest); 2.5-flash-lite retired for new users (404); image shape verified at build; keys at aistudio.google.com/apikey |
 | ollama | local | http://localhost:11434/v1 | /api/tags | none | none | none | chat per local pull | keyless, spend-safe; image/video stay manual (see PROFILES.md `local` preset) |
 | fal | — | https://queue.fal.run | none | FAL_KEY | bespoke:fal | bespoke:fal | image per queue model | image/video-only lane (no chat, no probe); keys at fal.ai dashboard |
 | custom | manual-api | (user-configured) | /models | (user-named) | verify-at-build | verify-at-build | (user-set) | escape hatch: empty baseURL, no fixed key |
