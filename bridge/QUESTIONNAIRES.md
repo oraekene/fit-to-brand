@@ -85,8 +85,10 @@ Write-through targets are listed per Q-set.
   Illustrator / Canva / make it with code / idea only with no finished
   file. Why this matters: the tool that finishes the layout fixes the text
   faults in every finished file.
-- **Q0.4 font source?** Google Fonts (Recommended default) / Adobe Fonts (license
-  confirmed?) / commercial foundry (which?) / system stack. → Approved Font Source.
+- **Q0.4 which font source do we use?** Pick Google Fonts (recommended) /
+  Adobe Fonts (show the license) / a paid font seller (name it) / the fonts
+  on your device. Why this matters: this choice sets where the fonts come
+  from and proves that we have permission to use them.
 - **Q0.5 cost unit + cap?** credits / tokens / API-$ / render-minutes / seat-time +
   a number. *Why: every Generation Plan prices against this.* No doc default —
   presets in `bridge/PROFILES.md` carry default caps (`quickstart -Preset` seeds
