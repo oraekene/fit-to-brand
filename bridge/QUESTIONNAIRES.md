@@ -66,16 +66,13 @@ Write-through targets are listed per Q-set.
 
 ## Q0 — Setup (before S0; three exchanges: Q0.1–0.3, then Q0.4–0.5, then Q0.6–0.8)
 
-- **Q0.1 image provider?** Registry id from `bridge/PROVIDERS.md` whose
-  `images` ≠ `none` (Recommended: registry default) / `manual` (keep the
-  preset/web-manual path via `PROFILES.md`) / legacy toolchain prose
-  (accepted, pre-registry runs stay green). *Why: fixes cost, quality, and
-  fallback behavior for the whole run — now as a select, not an essay.*
-  → Provider Profile image line + `Q0.1 = <id|manual|prose>`.
-- **Q0.1m image model?** The row's static default models (recommended first;
-  free-tier-safe default while the key carries no credit — see
-  `PROVIDERS-SPEC.md` §5). Skipped iff Q0.1 is `manual`. → model select
-  recorded beside the provider.
+- **Q0.1 which picture service do we use?** Pick one from the service list
+  (recommended first) / do it by hand with your own tools / name the tool
+  you already use. Why this matters: this choice sets the cost, the look,
+  and the backup plan for every picture in the run.
+- **Q0.1m which picture model do we use?** Pick the recommended model first
+  (free to use while your key has no credit). Skipped if you do it by hand.
+  Why this matters: the model sets the picture quality and the price.
 - **Q0.2 video/motion provider?** Same-stack-as-Q0.1 (Recommended: motion
   follows the image provider+model) / registry id whose `video` ≠ `none` /
   None → storyboard fallback / `manual`. Default: same-stack. → profile.

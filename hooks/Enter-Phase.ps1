@@ -22,8 +22,8 @@ $ErrorActionPreference = 'Stop'
 $prompts = @{
   # Builder: answers map to phased / batch-upfront / defaults (saved values never shown to users).
   'Q0.0'  = 'How do you want to answer questions? step by step (recommended) / upfront / defaults.'
-  'Q0.1'  = 'Image provider? registry id from bridge/PROVIDERS.md (openrouter rec) / manual = preset path / legacy toolchain prose.'
-  'Q0.1m' = 'Image model? registry row static default (rec) / other model id. Skipped iff Q0.1 is manual.'
+  'Q0.1'  = 'Which picture service do we use? pick from the service list (recommended) / by hand / name your own tool.'
+  'Q0.1m' = 'Which picture model do we use? recommended first. Skipped if you do it by hand.'
   'Q0.2'  = 'Video provider? same-stack (rec) / registry id / None->storyboard / manual.'
   'Q0.2m' = 'Video model? registry row static default (rec). Asked iff Q0.2 names a registry id other than the Q0.1 row.'
   'Q0.3'  = 'Layout/export finisher? Figma (rec) / Illustrator / Canva / code-SVG / None-conceptual-only.'
