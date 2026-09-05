@@ -26,35 +26,43 @@ audits must distinguish answered from defaulted. Validator regexes read only the
 `Q<id> =` head, so provenance never breaks hooks.
 Write-through targets are listed per Q-set.
 
-## Q0.0 — Run mode (the very first question, before Q0.1)
+## Q0.0 — How you answer questions (the very first question, before Q0.1)
 
-- **Q0.0 how do you want to answer questions?** phased = ask at each phase
-  (Recommended for first runs) / batch-upfront = answer everything answerable now in
-  frontier rounds R1–R2 (see Modes), rest deferred with defaults / defaults = take
-  every recommended default, interrupt only where no default exists. → run mode,
-  recorded first in PARAMS.log; `Enter-Phase.ps1` and `Test-Params` compose with all
-  three (keys are keys regardless of `src`).
+- **Q0.0 how do you want to answer questions?** (a) Step by step — I ask
+  at each step (recommended for first runs) / (b) Upfront — you answer two
+  rounds now, then I stay quiet / (c) Defaults — I use the recommended
+  answers and stop only where you must choose.
 
-## Modes (set by Q0.0; frontier model borrowed from batch-grill-me)
+## Modes (set by Q0.0)
 
-- **phased (default):** Q-sets fire at their phase per the elicitation spine tables.
-  Maximum context per question, maximum interruptions.
-- **batch-upfront:** two rounds now, then quiet. **R1** (no prerequisites): Q0.1–Q0.8,
-  Q1.1, Q1.3, Q1.4, Q3.1, Q4.2, Q4.3, Q10.1, QR.1 (rebrands), QC.1 (campaigns).
-   **R2** (depends on R1): Q0.1m image model (iff Q0.1 names a registry id),
-   Q0.2m video model (iff Q0.2 names another registry row), Q1.2 custom-overlay definition (iff custom), Q3.2 sectors,
-  Q4.1 wedge rank (iff category), Q13.1 thresholds (proposed per motion, confirmed at
-  M0). **Deferred-with-defaults** (depend on run artifacts, cannot be answered
-  honestly upfront): Q2.1, Q3.3, Q5.1, Q5.2, Q6.1, Q7.1, Q8.1, Q8.2, Q9.1–Q9.3,
-  Q11.1–Q11.3, Q12.1, Q12.2, Q14.1 — recorded `src=batch-deferred`, each confirmed or
-  challenged at its phase (a short confirm, not a re-ask). Q14.2 is never
-  deferred-defaulted: kills are always asked live.
-- **defaults:** every Q with a stated default auto-records `src=default`. Still asked
-  live (no default exists): Q0.5 (budget cap), Q0.6 (subject form — 1 click, no
-  default), QR.1 (equity sort — judgment, no default), Q14.2 (kill/launch-hold
-  confirms). Q0.7 defaults to `accept-pack`, Q0.8 defaults to `none-known`, Q1.4
-  defaults to `TBD`, Q4.3 to `none-known`, QC.1 to its pre-checks — flagged or
-  confirmed at phase as usual.
+- **step by step (the default):** I ask each step's questions when we reach
+  that step. Most interruptions, most context per question.
+- **upfront:** two rounds now, then quiet. **Round 1** (needs nothing
+  answered first): picture and video tools, layout tool, fonts, spending
+  cap, subject shape, source set, legal constraints, scope (one product or
+  a whole category), size limits, promise list, currency, certificate
+  rules, guideline chapters (plus which old assets to keep, for rebrands,
+  or which messages to launch first, for campaigns). **Round 2** (builds
+  on Round 1): picture model (only if Round 1 picked a picture service),
+  video model (only if Round 1 picked a different video service), sales
+  channel setup (only if you picked custom), market slices, your winning
+  difference (only for whole-category runs), stop rules (I propose per
+  group, you approve at launch). **The rest** (needs run results to exist,
+  so no honest upfront answer is possible): theme tie-break, reference
+  pick, grouping and buying checks, import and direction approvals, font
+  and work-plan approvals, review and locked-design approvals,
+  product-version and final checks, packaging and signoff, result reviews.
+  Each gets the recommended answer now and you approve or change it at its
+  step. I never pre-answer stop decisions or launch holds. I always ask
+  those live.
+- **defaults:** every question with a recommended answer takes it. I still
+  ask live where no recommended answer exists: your spending cap, your
+  subject's shape (one click, no default), which old assets to keep
+  (rebrands only, your judgment, no default), approval to stop a group or
+  hold a launch. The source set defaults to accept, legal constraints to
+  none known, the promise list is left to decide, forbidden claims to none
+  known, campaign messages to proven-first. I mark each default choice,
+  and you make sure that it is right at its step.
 
 ## Q0 — Setup (before S0; three exchanges: Q0.1–0.3, then Q0.4–0.5, then Q0.6–0.8)
 

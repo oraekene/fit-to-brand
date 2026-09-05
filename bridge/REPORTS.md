@@ -83,6 +83,9 @@ each step ends on a checkable criterion, facts keep one source of truth):
 3. **`soem writing guides` third — re-check, not optional.** The humanizer is general
    and can reintroduce a banned shape while fixing a word. The guides' own text names
    this the most-skipped step and the reason output drifts generic. Check, fix, ship.
+4. **`writing filters/simple-english.md` fourth — user-facing reports only.**
+   No internal term reaches the reader (term map + CHECK pass in the filter
+   file). Reports shipped before this rule stay as they are.
 
 ### Voice budget (what the filters don't ban — spend it deliberately)
 

@@ -20,7 +20,8 @@ param(
 $ErrorActionPreference = 'Stop'
 
 $prompts = @{
-  'Q0.0'  = 'Run mode? phased (recommended) / batch-upfront / defaults.'
+  # Builder: answers map to phased / batch-upfront / defaults (saved values never shown to users).
+  'Q0.0'  = 'How do you want to answer questions? step by step (recommended) / upfront / defaults.'
   'Q0.1'  = 'Image provider? registry id from bridge/PROVIDERS.md (openrouter rec) / manual = preset path / legacy toolchain prose.'
   'Q0.1m' = 'Image model? registry row static default (rec) / other model id. Skipped iff Q0.1 is manual.'
   'Q0.2'  = 'Video provider? same-stack (rec) / registry id / None->storyboard / manual.'
