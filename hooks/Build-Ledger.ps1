@@ -1,4 +1,4 @@
-<#Requires -Version 7.0
+#Requires -Version 7.0
 <#
 .SYNOPSIS
   Deterministic run-ledger compiler for fit-to-brand reports (R-LEDGER).
@@ -156,3 +156,4 @@ $md += "Decisions log: see Decisions taken above (H3/H2 lines, newest last)."
 $md | Set-Content -LiteralPath $Out -Encoding utf8
 Write-Output "LEDGER: wrote $Out ($($openIssues.Count) open issues)"
 exit 0
+

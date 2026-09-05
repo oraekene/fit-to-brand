@@ -90,12 +90,15 @@ verified at build), `ollama` (local, keyless, `none` for images), plus a
 
 - `PARAMS.log`: `Q0.1 = <provider-id>`, `Q0.2 = <image-provider-id|same|none>`,
   `Q0.3 = <finisher>`, `Q0.4 = <font source>`, `Q0.5 = <cost unit + cap>`,
-  plus `Q0.1m = <chat model id>` and `Q0.2m = <image model id>` (model select
+  plus `Q0.1m = <image model id>` and `Q0.2m = <video model id>` (model select
   recorded beside provider select).
-- `PROFILE.md`: provider ids + model ids + baseURLs + capability flags +
-  fallbacks. Keys never appear (not even env var *values* — names only).
-- `ftb.ps1 quickstart -Preset` keeps working (presets become registry-backed
-  shortcuts); `-Provider` / `-Model` flags added at build time.
+- `PROFILE.md`: three lines under the existing declaration —
+  `Provider: <id> (<baseURL>)`, `Models: image <id> / video <id|same-stack>`,
+  `Key: <keyEnv> in env (value never recorded)` — plus the row's endpoint
+  shapes and the standard fallbacks/outside-repo trailer. Keys never appear
+  (not even env var *values* — names only).
+- `ftb.ps1 quickstart -Preset` keeps working (presets stay a parallel fallback
+  path, not registry-backed shortcuts — one toolchain source per run, §9);
 
 ### 3c. Hook: `hooks/Test-Provider.ps1 -RunDir <dir>`
 
@@ -172,8 +175,9 @@ explicit escape on both, so no run is forced onto API paths.
   is a registry id other than the Q0.1 row). `Test-Params` (H1) checks keys,
   never values — old preset-seeded values keep passing.
 - Elicitation modes unchanged: `defaults`/`quickstart` seeds Q0.1 = registry
-  default + Q0.1m = its free-safe default (`src=default`); `manual` answers
-  keep `src=asked` semantics as today.
+  default + Q0.1m = its free-safe default (`src=asked` — choosing is
+  answering, same rule as `-Preset`); `manual` answers keep `src=asked`
+  semantics as today.
 
 ## 8. Test-Provider hook spec (`hooks/Test-Provider.ps1`, new file at build)
 
@@ -181,7 +185,9 @@ Single source of truth is the registry Markdown table (§3a) — the hook parses
 it (split `|` rows, 8 columns), so there is no second file to drift. Local-only
 hook (needs keys): never invoked by CI.
 
-- **Params:** `-RunDir <dir> -Provider <id> [-Model <id>] [-ProbeTimeoutSec 15]`.
+- **Params:** `-RunDir <dir> -Provider <id> [-Model <id>] [-ProbeTimeoutSec 15]`
+  plus `-Registry <path>` override (testability seam for offline checks; the
+  default is the repo `bridge/PROVIDERS.md`).
 - **Checks, in order (stop at first red):**
   1. Registry row `<id>` exists (aliases resolve to the canonical id).
   2. Key presence: every `keyEnv` name set and non-empty. Output is
@@ -191,8 +197,9 @@ hook (needs keys): never invoked by CI.
      skip to check 4 with a reachability probe only. This check spends
      nothing (GET only, never a generation).
   4. Model check (iff `-Model`): exact id match in the response `data[].id`
-     list, else exact match in the row's static defaults (covers endpoints
-     with no `/models`, e.g. some local servers).
+     list, else exact token match in the row's static defaults (whitespace/
+     `;`-separated tokens — substring never matches, so `-Model gpt` stays
+     red against `gpt-4o-mini`).
 - **Output:** `PASS: [P-row]/[P-key]/[P-auth]/[P-model] …` lines,
   `RESULT: GREEN` exit 0, or first `FAIL:` + `RESULT: RED` exit 1 (same
   Say/RESULT dialect as `hooks/Validate-Gates.ps1`).
@@ -209,7 +216,10 @@ hook (needs keys): never invoked by CI.
 - New optional flags: `quickstart|init -Provider <id> -Model <id>`
   (also `-VideoProvider/-VideoModel`). Seeding writes Q0.1/Q0.1m
   (Q0.2 defaults to `same-stack`) with `src=asked` — choosing is answering,
-  same rule as `-Preset` today.
+  same rule as `-Preset` today. Provider `quickstart` deliberately leaves
+  Q0.3 (layout), Q0.4 (fonts), Q0.5 (cap) unseeded — unlike the preset path,
+  which answers them from the table — so they are asked live at phase 0
+  (the runner prints them as the phase-0 ask-list).
 - `-Preset` behavior unchanged; `-Provider` and `-Preset` together is
   BLOCKED (one toolchain source per run). Preset table and `PROFILES.md`
   stay byte-identical (fallback notes, §1).

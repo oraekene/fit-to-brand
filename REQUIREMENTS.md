@@ -16,3 +16,17 @@ HTML references the declared families with system fallbacks
 (`Inter, "Segoe UI", Arial, sans-serif`); exact licensed rendering happens in
 the run's finishing tool (e.g. Figma), never in the export. The export is a
 render of the `.md` source of truth, not a rewrite.
+
+## Key env table (provider registry `bridge/PROVIDERS.md`)
+
+Keys live in process env or the platform secret store — never in chat, runs,
+logs, or git. Hooks check presence/validity and print PASS/FAIL only.
+
+| Registry id | Env var | Issue | Free-tier note |
+|---|---|---|---|
+| openrouter | `OPENROUTER_API_KEY` | openrouter.ai/keys | `:free` models testable without credit |
+| openai | `OPENAI_API_KEY` | platform.openai.com/api-keys | no free tier: auth-check only |
+| google-ai-studio | `GOOGLE_AI_STUDIO_KEY` | aistudio.google.com/apikey | text free tier; image shape verified at build |
+| fal | `FAL_KEY` | fal.ai dashboard | per-model billing; probe unsupported |
+| ollama | — (keyless) | — | spend-safe by construction |
+| custom | user-named | user endpoint | per endpoint |

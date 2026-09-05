@@ -21,8 +21,10 @@ $ErrorActionPreference = 'Stop'
 
 $prompts = @{
   'Q0.0'  = 'Run mode? phased (recommended) / batch-upfront / defaults.'
-  'Q0.1'  = 'Image generator? Lovart-native (rec) / GPT-image / Midjourney+LLM / Firefly / SD-Comfy-local / Other.'
-  'Q0.2'  = 'Video/motion generator? same-stack (rec) / Runway / Pika-Kling-Sora-Luma / None->storyboard.'
+  'Q0.1'  = 'Image provider? registry id from bridge/PROVIDERS.md (openrouter rec) / manual = preset path / legacy toolchain prose.'
+  'Q0.1m' = 'Image model? registry row static default (rec) / other model id. Skipped iff Q0.1 is manual.'
+  'Q0.2'  = 'Video provider? same-stack (rec) / registry id / None->storyboard / manual.'
+  'Q0.2m' = 'Video model? registry row static default (rec). Asked iff Q0.2 names a registry id other than the Q0.1 row.'
   'Q0.3'  = 'Layout/export finisher? Figma (rec) / Illustrator / Canva / code-SVG / None-conceptual-only.'
   'Q0.4'  = 'Font source? Google Fonts (rec) / Adobe (license?) / commercial foundry / system stack.'
   'Q0.5'  = 'Cost unit + cap? credits/tokens/API-$/render-min + number. No default — must answer.'
@@ -99,6 +101,25 @@ if (Test-Path -LiteralPath $plog) {
   }
 }
 
+$HooksDir = Split-Path -Parent $PSCommandPath
+. (Join-Path $HooksDir 'Read-Registry.ps1')
+
+# registry row for a Q0.1/Q0.2 answer, or $null when it names no usable row:
+# manual (preset path), same-stack/none, legacy prose, missing registry, and
+# rows whose medium is unavailable (images=none for image callers, video=none
+# for video callers) never trigger model keys.
+function Get-ProviderRowFor($runDir, $value, $medium) {
+  if ([string]::IsNullOrWhiteSpace($value)) { return $null }
+  $abs = $runDir
+  if (-not [IO.Path]::IsPathRooted($abs)) { $abs = Join-Path (Get-Location) $abs }
+  $rows = Get-RegistryRows (Split-Path -Parent (Split-Path -Parent $abs))
+  $row = Resolve-RegistryRow $rows $value
+  if ($null -eq $row -or $row.id -eq 'manual') { return $null }
+  if ($medium -eq 'images' -and $row.images -eq 'none') { return $null }
+  if ($medium -eq 'video' -and $row.video -eq 'none') { return $null }
+  return $row
+}
+
 function Test-NamingRequired($runDir) {
   $s0 = Join-Path $runDir 'icp/S0_SPEC.md'
   if (!(Test-Path -LiteralPath $s0)) { return $true }  # S0 unwritten: assume required, S0 gate decides
@@ -117,6 +138,14 @@ foreach ($ph in $table) {
 }
 if (($answers['Q1.1'] -eq 'category') -and ($Phase -gt 3)) { $need += @('Q4.1') }
 if ($namingReq -and ($Variant -ne 'Campaign') -and ($Phase -gt 5)) { $need += @('QN.3') }
+# provider-model keys (PROVIDERS-SPEC §7): Q0.1m iff Q0.1 names an image-capable
+# registry row; Q0.2m iff Q0.2 names a video-capable row other than the Q0.1
+# row. manual / same-stack / none / legacy prose / missing registry never
+# trigger (pre-registry behavior preserved).
+$canonImage = Get-ProviderRowFor $RunDir $answers['Q0.1'] 'images'
+$canonVideo = Get-ProviderRowFor $RunDir $answers['Q0.2'] 'video'
+if (($Phase -gt 0) -and ($null -ne $canonImage) -and -not $answers.ContainsKey('Q0.1m')) { $need += @('Q0.1m') }
+if (($Phase -gt 0) -and ($null -ne $canonVideo) -and ($canonVideo.id -ne $canonImage.id) -and -not $answers.ContainsKey('Q0.2m')) { $need += @('Q0.2m') }
 $need = @($need | Select-Object -Unique)
 $missing = @($need | Where-Object { -not $answers.ContainsKey($_) })
 
@@ -131,6 +160,8 @@ Write-Output "ENTRY: PROCEED (all prior keys present)"
 
 $here = @($table | Where-Object { $_.n -eq $Phase })
 $ask = @($here[0].keys)
+if (($Phase -eq 0) -and ($null -ne $canonImage) -and -not $answers.ContainsKey('Q0.1m')) { $ask += @('Q0.1m') }
+if (($Phase -eq 0) -and ($null -ne $canonVideo) -and ($canonVideo.id -ne $canonImage.id) -and -not $answers.ContainsKey('Q0.2m')) { $ask += @('Q0.2m') }
 if ($Variant -eq 'Rebrand') { $ask += $here[0].extraRebrand }
 if ($ask.Count -eq 0) {
   Write-Output "ASK NOW: none static this phase (per-generation Q8.2 / live Q14.2 still apply — see QUESTIONNAIRES.md)"

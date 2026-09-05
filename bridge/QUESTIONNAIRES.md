@@ -41,7 +41,8 @@ Write-through targets are listed per Q-set.
   Maximum context per question, maximum interruptions.
 - **batch-upfront:** two rounds now, then quiet. **R1** (no prerequisites): Q0.1–Q0.8,
   Q1.1, Q1.3, Q1.4, Q3.1, Q4.2, Q4.3, Q10.1, QR.1 (rebrands), QC.1 (campaigns).
-  **R2** (depends on R1): Q1.2 custom-overlay definition (iff custom), Q3.2 sectors,
+   **R2** (depends on R1): Q0.1m image model (iff Q0.1 names a registry id),
+   Q0.2m video model (iff Q0.2 names another registry row), Q1.2 custom-overlay definition (iff custom), Q3.2 sectors,
   Q4.1 wedge rank (iff category), Q13.1 thresholds (proposed per motion, confirmed at
   M0). **Deferred-with-defaults** (depend on run artifacts, cannot be answered
   honestly upfront): Q2.1, Q3.3, Q5.1, Q5.2, Q6.1, Q7.1, Q8.1, Q8.2, Q9.1–Q9.3,
@@ -57,12 +58,21 @@ Write-through targets are listed per Q-set.
 
 ## Q0 — Setup (before S0; three exchanges: Q0.1–0.3, then Q0.4–0.5, then Q0.6–0.8)
 
-- **Q0.1 image generator?** Options: Lovart-native (Recommended if running in Lovart) /
-  GPT-image-class / Midjourney + LLM direction / Adobe Firefly / local SD-Comfy /
-  Other. *Why: fixes cost, quality, and fallback behavior for the whole run.*
-  Default: Lovart-native. → Provider Profile image line.
-- **Q0.2 video/motion generator?** Same-stack-as-image (Recommended) / Runway /
-  Pika-Kling-Sora-Luma / None → storyboard fallback. Default: same-stack. → profile.
+- **Q0.1 image provider?** Registry id from `bridge/PROVIDERS.md` whose
+  `images` ≠ `none` (Recommended: registry default) / `manual` (keep the
+  preset/web-manual path via `PROFILES.md`) / legacy toolchain prose
+  (accepted, pre-registry runs stay green). *Why: fixes cost, quality, and
+  fallback behavior for the whole run — now as a select, not an essay.*
+  → Provider Profile image line + `Q0.1 = <id|manual|prose>`.
+- **Q0.1m image model?** The row's static default models (recommended first;
+  free-tier-safe default while the key carries no credit — see
+  `PROVIDERS-SPEC.md` §5). Skipped iff Q0.1 is `manual`. → model select
+  recorded beside the provider.
+- **Q0.2 video/motion provider?** Same-stack-as-Q0.1 (Recommended: motion
+  follows the image provider+model) / registry id whose `video` ≠ `none` /
+  None → storyboard fallback / `manual`. Default: same-stack. → profile.
+  **Q0.2m video model?** Asked iff Q0.2 names a registry id other than the
+  Q0.1 row (row static default recommended first).
 - **Q0.3 layout/export finisher?** Figma (Recommended) / Illustrator / Canva /
   code-SVG / None-conceptual-only. *Why: whoever finishes type owns text defects.*
   Default: Figma. → profile.
@@ -173,7 +183,9 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 - **Q8.1 font system A or B?** A (Recommended, agent states why) / B / neither (state
   what to change). → typography approval; kit cannot generate before this.
 - **Q8.2 Generation Plan: approve, change, or cancel?** Approve (Recommended if plan
-  matches) / request changes / cancel. *Fires before every costly generation.*
+  matches) / request changes / cancel. *Fires before every costly generation.
+  When the plan cites `provider:` + `model:`, approval cites the green
+  `Test-Provider` check (eligibility); the spend decision stays human.*
 
 ## Q9 — Stage 3 → Gate 3
 

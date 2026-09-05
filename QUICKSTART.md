@@ -12,7 +12,9 @@
 ```
 
 Presets (`bridge/PROFILES.md`): `lovart` / `gpt` / `api` / `midjourney` /
-`firefly` / `local` / `figma` / `docs`. Manual setup is still available:
+`firefly` / `local` / `figma` / `docs`. Registry alternative
+(`bridge/PROVIDERS.md`): swap `-Preset <name>` for `-Provider <id> [-Model
+<m>]` — Q0.3–Q0.5 are then asked live at phase 0. Manual setup is still available:
 `init -RunId <id> -Variant <v> -Mode <m> [-Preset <name>]`, then `next` per phase.
 
 ## What quickstart seeds (and what it deliberately doesn't)

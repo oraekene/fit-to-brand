@@ -1,4 +1,4 @@
-<#Requires -Version 7.0
+#Requires -Version 7.0
 <#
 .SYNOPSIS
   Report export chain for fit-to-brand: Markdown -> HTML -> PDF.
@@ -79,4 +79,5 @@ if ($Formats -contains 'pdf') {
 
 Write-Output 'RESULT: GREEN (export complete; .md unchanged and still source of truth)'
 exit 0
+
 

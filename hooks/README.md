@@ -52,6 +52,8 @@ runner that binds them:
 | Gate 1 brief | approval recorded before reference analysis | H3 (`GATES.log`), existence H1 | `Test-Approval -Gate Gate1` |
 | Gate 2 direction | approval recorded before any kit generation | H3, existence H1 | `Test-Approval -Gate Gate2` |
 | Generation Plan | all required fields present (profile, cost, fonts+source, prohibitions, formats, workaround) | H1 fields + H3 spend approval | `Test-GenPlan` + approval token |
+| Generation Plan provider fields | plans citing `provider:` also carry `model:` + a resolvable registry row (`bridge/PROVIDERS.md`); spend approval cites the green `Test-Provider` | H1 presence (`P-planprovider`, legacy plans without `provider:` skip) + H3 | `Validate-Gates -Stage BRAND` + approval token |
+| Provider health | registry row exists; key env present (names only); `GET {baseURL}{probe}` 200; model id known | H1-style preflight, local-only (never CI) | `Test-Provider.ps1 -RunDir <dir> -Provider <id> [-Model <id>]` |
 | Gate 3 Anchor | approval recorded; locked rules + prohibitions in checkpoint | H3, existence H1 | `Test-Approval -Gate Gate3` |
 | Guideline modules | one output per declared module; reviewed separately | H1 (file count = modules) | `Test-Modules` (pixels unverifiable — noted limit) |
 | Typography | exact family + source + role recorded; visible labels claimed | H1 record check (render match needs vision → H2/human note) | `Test-TypeRecord` |

@@ -4,8 +4,8 @@
   Runner-owned state machine for fit-to-brand runs — the single choke point for phase transitions.
 .DESCRIPTION
   Phases advance ONLY through this script. The agent never self-declares a transition.
-    ftb.ps1 init   -RunId <id> -Variant Joint|Rebrand|Campaign -Mode phased|batch|defaults [-Preset <name>]
-    ftb.ps1 quickstart -RunId <id> -Variant Joint|Rebrand|Campaign -Preset <name> -Form digital|physical|hybrid|human-service [-Subject "<brief>"]
+    ftb.ps1 init   -RunId <id> -Variant Joint|Rebrand|Campaign -Mode phased|batch|defaults [-Preset <name> | -Provider <id> [-Model <m>] [-VideoProvider <v>] [-VideoModel <vm>]]
+    ftb.ps1 quickstart -RunId <id> -Variant Joint|Rebrand|Campaign (-Preset <name> | -Provider <id> [-Model <m>]) -Form digital|physical|hybrid|human-service [-Subject "<brief>"]
     ftb.ps1 run    [-RunId <id>] [-MaxSteps <n>]   # auto-next until BLOCKED or COMPLETE
     ftb.ps1 next   [-RunId <id>]      # close current phase (exit-lock) + open next (entry-lock)
     ftb.ps1 ask    [-RunId <id>]      # reprint current phase ask-list
@@ -29,6 +29,10 @@ param(
   [string]$Variant = 'Joint',
   [string]$Mode = 'phased',
   [string]$Preset = '',
+  [string]$Provider = '',
+  [string]$Model = '',
+  [string]$VideoProvider = '',
+  [string]$VideoModel = '',
   [string]$Subject = '',
   [string]$Form = '',
   [int]$MaxSteps = 12,
@@ -158,6 +162,43 @@ function Write-SourcesTemplate($runDir, $form) {
   Set-Content -LiteralPath (Join-Path $runDir 'SOURCES.log') -Value $body -Encoding utf8
 }
 
+. (Join-Path (Split-Path -Parent $PSCommandPath) 'Read-Registry.ps1')
+
+function Get-ProviderRow($id) {
+  # canonical registry row for an id/alias, or $null (bridge/PROVIDERS.md is single source)
+  return Resolve-RegistryRow (Get-RegistryRows $RepoRoot) $id
+}
+
+function Assert-ProviderFlags($Provider, $Model, $VideoProvider, $VideoModel) {
+  # returns $null when flags are coherent, else the BLOCKED reason (single
+  # return value by design: Write-Output here would pollute the return and
+  # defeat the caller's -not check).
+  if ($Preset -and $Provider) { return 'one toolchain source per run: -Preset or -Provider, not both' }
+  if (($Model -or $VideoProvider -or $VideoModel) -and -not $Provider) { return '-Model/-VideoProvider/-VideoModel need -Provider' }
+  foreach ($pair in @(@('provider', $Provider), @('video provider', $VideoProvider))) {
+    if ($pair[1] -and -not (Get-ProviderRow $pair[1])) { return "unknown $($pair[0]) $($pair[1]); see bridge/PROVIDERS.md" }
+  }
+  return $null
+}
+
+function Write-ProviderProfile($runDir, $row, $model, $vrow, $vmodel) {
+  $date = Get-Date -Format 'yyyy-MM-dd'
+  $vline = ($vrow ? "video $($vmodel ? $vmodel : '(Q0.2m at phase 0)')" : 'same-stack (Q0.1 provider+model drive motion)')
+  $body = @("# Provider Profile — registry $($row.id) (declared $date)",
+    "Provider: $($row.id) ($($row.baseURL))",
+    "Models: image $($model ? $model : '(Q0.1m at phase 0)') / $vline",
+    "Key: $($row.keyEnv) in env (value never recorded)",
+    "Endpoint shapes: images $($row.images); video $($row.video) (see bridge/PROVIDERS.md)",
+    'Fallbacks agreed: web-manual path via bridge/PROFILES.md presets when the provider is unavailable; packaging stays conceptual-only',
+    '',
+    'Outside-the-repo half: logins, API keys, and licenses live in your platform account,',
+    'shell env, or agent tool config — never in this run. Local endpoints: record the URL',
+    'in the provider row above (custom) — keys never.',
+    'Override: append a PARAMS.log line (later lines win for entry locks), update this',
+    'file, and re-issue pending Generation Plans (see bridge/CAMPAIGN-EXPANSION-ORCHESTRATION.md:105).')
+  Set-Content -LiteralPath (Join-Path $runDir 'PROFILE.md') -Value $body -Encoding utf8
+}
+
 # joint/rebrand phase order 0..10; campaign order 1,2,5
 function Phase-Order($variant) {
   if ($variant -eq 'Campaign') { return @(1, 2, 5) }
@@ -178,6 +219,9 @@ switch ($Command) {
     if ($Variant -notin @('Joint', 'Rebrand', 'Campaign')) { Write-Output "RESULT: BLOCKED (unknown variant $Variant)"; exit 1 }
     if ($Mode -notin @('phased', 'batch', 'defaults')) { Write-Output "RESULT: BLOCKED (unknown mode $Mode)"; exit 1 }
     if ($Preset -and -not $presets.ContainsKey($Preset)) { Write-Output "RESULT: BLOCKED (unknown preset $Preset; valid: $($presets.Keys -join ', '))"; exit 1 }
+    $whyProv = Assert-ProviderFlags $Provider $Model $VideoProvider $VideoModel; if ($whyProv) { Write-Output "RESULT: BLOCKED ($whyProv)"; exit 1 }
+    $prow = Get-ProviderRow $Provider
+    $vrow = Get-ProviderRow $VideoProvider
     $existing = Read-State $RunId
     if ($existing -and -not $Force) { Write-Output "RESULT: BLOCKED (run $RunId already initialized; use -Force to reset)"; exit 1 }
     foreach ($sub in @('icp', 'brand', 'bridge')) { New-Item -ItemType Directory -Path (Join-Path $RepoRoot "runs/$RunId/$sub") -Force | Out-Null }
@@ -191,6 +235,15 @@ switch ($Command) {
       Write-ProfileFile $runDir $Preset $p
       Write-Output "PRESET: $Preset seeded (Q0.1-Q0.5, src=asked) + PROFILE.md written"
     }
+    if ($prow) {
+      $runDir = Join-Path $RepoRoot "runs/$RunId"
+      Seed-Answer $runDir 'Q0.1' $prow.id 'runner-init' 'asked'
+      if ($Model) { Seed-Answer $runDir 'Q0.1m' $Model 'runner-init' 'asked' }
+      Seed-Answer $runDir 'Q0.2' ($vrow ? $vrow.id : 'same-stack') 'runner-init' 'asked'
+      if ($vrow -and $VideoModel) { Seed-Answer $runDir 'Q0.2m' $VideoModel 'runner-init' 'asked' }
+      Write-ProviderProfile $runDir $prow $Model $vrow $VideoModel
+      Write-Output "PROVIDER: $($prow.id) seeded (Q0.1$($Model ? '+Q0.1m' : '') + Q0.2, src=asked) + PROFILE.md written"
+    }
     Write-Output "INIT: run $RunId ($Variant, $Mode) opened at phase $first"
     $r = Repo-Pwsh 'Enter-Phase.ps1' @('-RunDir', (Join-Path $RepoRoot "runs/$RunId"), '-Phase', $first, '-Variant', $Variant)
     $r.out | Write-Output
@@ -199,8 +252,11 @@ switch ($Command) {
   'quickstart' {
     if (-not $RunId) { Write-Output 'RESULT: BLOCKED (quickstart needs -RunId)'; exit 1 }
     if ($Variant -notin @('Joint', 'Rebrand', 'Campaign')) { Write-Output "RESULT: BLOCKED (unknown variant $Variant)"; exit 1 }
-    if (-not $Preset) { Write-Output "RESULT: BLOCKED (quickstart needs -Preset <name>; valid: $($presets.Keys -join ', '); or use init for manual setup)"; exit 1 }
-    if (-not $presets.ContainsKey($Preset)) { Write-Output "RESULT: BLOCKED (unknown preset $Preset; valid: $($presets.Keys -join ', '))"; exit 1 }
+    if (-not $Preset -and -not $Provider) { Write-Output "RESULT: BLOCKED (quickstart needs -Preset <name>; valid: $($presets.Keys -join ', '); or -Provider <id> (see bridge/PROVIDERS.md); or use init for manual setup)"; exit 1 }
+    if ($Preset -and -not $presets.ContainsKey($Preset)) { Write-Output "RESULT: BLOCKED (unknown preset $Preset; valid: $($presets.Keys -join ', '))"; exit 1 }
+    $whyProv = Assert-ProviderFlags $Provider $Model $VideoProvider $VideoModel; if ($whyProv) { Write-Output "RESULT: BLOCKED ($whyProv)"; exit 1 }
+    $qprow = Get-ProviderRow $Provider
+    $qvrow = Get-ProviderRow $VideoProvider
     $forms = @('digital', 'physical', 'hybrid', 'human-service')
     if (-not $Form) { Write-Output "RESULT: BLOCKED (quickstart needs -Form <form>; valid: $($forms -join ', '); form has no default — the flag is the 1 click, see bridge/QUESTIONNAIRES.md Q0.6)"; exit 1 }
     if ($forms -notcontains $Form) { Write-Output "RESULT: BLOCKED (unknown form $Form; valid: $($forms -join ', '))"; exit 1 }
@@ -211,8 +267,17 @@ switch ($Command) {
     Write-State $RunId @{ run = $RunId; variant = $Variant; mode = 'defaults'; phase = $first }
     $runDir = Join-Path $RepoRoot "runs/$RunId"
     Seed-Answer $runDir 'Q0.0' 'defaults' 'quickstart' 'asked'
-    $p = $presets[$Preset]
-    for ($i = 0; $i -lt 5; $i++) { Seed-Answer $runDir "Q0.$($i + 1)" $p.q[$i] 'quickstart' 'asked' }
+    if ($Preset) {
+      $p = $presets[$Preset]
+      for ($i = 0; $i -lt 5; $i++) { Seed-Answer $runDir "Q0.$($i + 1)" $p.q[$i] 'quickstart' 'asked' }
+      Write-ProfileFile $runDir $Preset $p
+    } else {
+      Seed-Answer $runDir 'Q0.1' $qprow.id 'quickstart' 'asked'
+      if ($Model) { Seed-Answer $runDir 'Q0.1m' $Model 'quickstart' 'asked' }
+      Seed-Answer $runDir 'Q0.2' ($qvrow ? $qvrow.id : 'same-stack') 'quickstart' 'asked'
+      if ($qvrow -and $VideoModel) { Seed-Answer $runDir 'Q0.2m' $VideoModel 'quickstart' 'asked' }
+      Write-ProviderProfile $runDir $qprow $Model $qvrow $VideoModel
+    }
     $title = ($Subject ? $Subject : $RunId) -replace '\|', '/'
     $year = (Get-Date).Year
     Seed-Answer $runDir 'Q1.1' 'single' 'quickstart' 'default'
@@ -230,10 +295,15 @@ switch ($Command) {
     Seed-Answer $runDir 'Q13.1' 'accept default thresholds' 'quickstart' 'default'
     Seed-Answer $runDir 'QRP.1' 'standard English' 'quickstart' 'default'
     if ($Variant -eq 'Campaign') { Seed-Answer $runDir 'QC.1' 'proven first pre-checked' 'quickstart' 'default' }
-    Write-ProfileFile $runDir $Preset $p
     Write-SourcesTemplate $runDir $Form
-    Write-Output "INIT: run $RunId ($Variant, defaults, preset $Preset, form $Form) opened at phase $first"
-    Write-Output 'SEEDED: Q0.0-Q0.5 (preset, src=asked) + Q0.6 form (flag, src=asked) + Q0.7, Q0.8, Q1.1-Q1.4, QN.0, Q3.1, Q4.2, Q4.3, Q10.1, Q13.1, QRP.1 (doc defaults, src=default)'
+    if ($Preset) {
+      Write-Output "INIT: run $RunId ($Variant, defaults, preset $Preset, form $Form) opened at phase $first"
+      Write-Output 'SEEDED: Q0.0-Q0.5 (preset, src=asked) + Q0.6 form (flag, src=asked) + Q0.7, Q0.8, Q1.1-Q1.4, QN.0, Q3.1, Q4.2, Q4.3, Q10.1, Q13.1, QRP.1 (doc defaults, src=default)'
+    } else {
+      Write-Output "INIT: run $RunId ($Variant, defaults, provider $($qprow.id), form $Form) opened at phase $first"
+      Write-Output 'SEEDED: Q0.0-Q0.1 (+Q0.1m, Q0.2, src=asked) + Q0.6 form (flag, src=asked) + Q0.7, Q0.8, Q1.1-Q1.4, QN.0, Q3.1, Q4.2, Q4.3, Q10.1, Q13.1, QRP.1 (doc defaults, src=default)'
+      Write-Output 'PHASE-0 ASK: Q0.3 layout, Q0.4 fonts, Q0.5 cap (+Q0.1m/Q0.2m unless seeded) — answer, then run again.'
+    }
     Write-Output 'FIRST INTERRUPT: tick the SOURCES.log pack checklist (append S<nn> lines) — S0 spec-sha must resolve in it, or the S0 exit-lock goes red.'
     Write-Output 'NOT SEEDED (confirm at phase, then run again): Q3.3, Q5.1, Q5.2, Q6.1, Q7.1, Q8.1, Q8.2, Q9.1-Q9.3, Q11.1-Q11.3, Q12.1, Q12.2, Q14.1'
     Write-Output 'NEVER DEFAULTED (always asked live): Q14.2 kill/launch-hold confirms, QN.4 trademark/domain/handle checks'
@@ -327,3 +397,5 @@ switch ($Command) {
   }
   default { Write-Output "RESULT: BLOCKED (unknown command $Command; want init|quickstart|run|next|ask|status)"; exit 1 }
 }
+
+

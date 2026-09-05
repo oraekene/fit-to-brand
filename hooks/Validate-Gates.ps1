@@ -15,6 +15,20 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $script:fails = 0
+$HooksDir = Split-Path -Parent $PSCommandPath
+. (Join-Path $HooksDir 'Read-Registry.ps1')
+
+function Find-RepoRoot($runDir) {
+  # nearest ancestor holding bridge/PROVIDERS.md (run dirs sit 2 deep, but walk anyway)
+  $d = $runDir
+  if (-not [IO.Path]::IsPathRooted($d)) { $d = Join-Path (Get-Location) $d }
+  for ($i = 0; $i -lt 5; $i++) {
+    if (Test-Path -LiteralPath (Join-Path $d 'bridge/PROVIDERS.md')) { return $d }
+    $d = Split-Path -Parent $d
+    if (-not $d) { break }
+  }
+  return ''
+}
 
 function Say($ok, $gate, $msg) {
   if ($ok) { Write-Output "PASS: [$gate] $msg" }
@@ -189,6 +203,27 @@ if (Stage-On 'BRAND') {
     Say (($lines -match "^H3 $gate APPROVED").Count -gt 0) 'H3-approval' "$gate approval token present in GATES.log"
   }
   Say (($lines -match '^H2 audit APPROVED').Count -gt 0 -or ($lines -match '^AUDIT APPROVED').Count -gt 0) 'H1-verdict' 'audit APPROVED token present before scale'
+  # provider-cited plans (PROVIDERS-SPEC §8 wiring): plans WITHOUT a provider:
+  # line are legacy/manual and skip. Plans citing one need a model: line and a
+  # resolvable registry row (spend eligibility itself is the Q8.2 approval,
+  # which cites the green Test-Provider — agent-side, recorded in GATES.log).
+  $gp = Join-Path $RunDir 'brand/GENERATION-PLANS.md'
+  if (Test-Path -LiteralPath $gp) {
+    $graw = Get-Content -LiteralPath $gp
+    $pcited = @($graw | Where-Object { $_ -match '^\s*provider:\s*(\S+)' } | ForEach-Object { $Matches[1] })
+    if ($pcited.Count -gt 0) {
+      $hasModel = @($graw | Where-Object { $_ -match '^\s*model:' }).Count -gt 0
+      Say $hasModel 'P-planprovider' "provider-cited plan carries a model: line$($hasModel ? '' : ' (missing)')"
+      $root = Find-RepoRoot $RunDir
+      $greg = ($root -ne '') ? (Get-RegistryRows $root) : @()
+      foreach ($provId in ($pcited | Select-Object -Unique)) {
+        $ok = ($null -ne (Resolve-RegistryRow $greg $provId))
+        Say $ok 'P-planprovider' ($ok ? "plan provider '$provId' resolves in bridge/PROVIDERS.md" : "plan provider '$provId' unknown (see bridge/PROVIDERS.md)")
+      }
+    } else {
+      Write-Output 'PASS: [P-planprovider] no provider-cited plans (legacy/manual path)'
+    }
+  }
 }
 
 # ---------- M: thread coverage, M0 predictions, chain ----------
