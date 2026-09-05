@@ -31,6 +31,12 @@ Worked illustrations (fictional SunJar SHS-200, miniature N=6, all figures illus
 with executable miniature datasets (`data-joint/`, `data-rebrand/`, `data-campaign/`)
 and real `hooks/Validate-Gates.ps1` logs (`hook-*.txt`). Start here before your first run.
 
+Fastest path (one-click runs): `QUICKSTART.md` — `hooks/ftb.ps1 quickstart -RunId
+<id> -Variant Joint|Rebrand|Campaign -Preset <name> -Form digital|physical|hybrid|human-service` (presets in
+`bridge/PROFILES.md`) seeds provider + safe defaults, `ftb.ps1 run` auto-advances
+until a real judgment is needed, one batched screen covers Gates 1–4 + Anchor +
+pending plans.
+
 Conventions: all `like/this.md` paths in docs are repo-root-relative. The skill name
 `icp-6` and prose mentions of `icp-6`/`brand-system` refer to the pipelines, not to
 old directory names.
@@ -65,7 +71,8 @@ mode first (phased / batch-upfront / defaults), Q-sets per phase in
 on missing keys. No stage transition without its hooks green.
 
 Enforcement architecture (platform-agnostic bundle, works on any agent):
-**runner** `hooks/ftb.ps1` (`init`/`next`/`ask`/`status`) owns all phase transitions
+**runner** `hooks/ftb.ps1` (`quickstart` once, then `run`; or manual
+`init`/`next`/`ask`/`status`) owns all phase transitions
 via `runs/<id>/STATE.json` — the agent's only transition rule; **adapters** in
 `hooks/platforms/` wire true blocking where a platform offers pre-tool hooks
 (Claude Code guard included, generic + opencode mapping documented); **CI**
