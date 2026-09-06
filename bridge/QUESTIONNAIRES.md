@@ -97,7 +97,7 @@ Write-through targets are listed per Q-set.
 - **Q0.6 what shape is your subject?** Pick digital (software or an app) /
   physical (a device or kit) / hybrid (a device with software) /
   human-service (setup, care, or teaching). There is no default. Why this
-  matters: this choice sets which sources I ask for and which words
+  matters: this choice sets which sources I request and which words
   describe it.
 - **Q0.7 context pack — accept the 5-item pack?** Accept pack (Recommended) / swap
   one source / batch-upload all now. *Why: S0 can only cite what it was given — a
