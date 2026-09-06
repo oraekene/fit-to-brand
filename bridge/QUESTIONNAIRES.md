@@ -89,10 +89,10 @@ Write-through targets are listed per Q-set.
   Adobe Fonts (show the license) / a paid font seller (name it) / the fonts
   on your device. Why this matters: this choice sets where the fonts come
   from and proves that we have permission to use them.
-- **Q0.5 cost unit + cap?** credits / tokens / API-$ / render-minutes / seat-time +
-  a number. *Why: every Generation Plan prices against this.* No doc default —
-  presets in `bridge/PROFILES.md` carry default caps (`quickstart -Preset` seeds
-  yours with `src=asked`); manual runs must answer.
+- **Q0.5 what spending cap do we use?** Pick a unit (credits / tokens /
+  API-$ / render-minutes / seat-time) and give a number. There is no
+  default. Skipped if you picked a preset. Why this matters: every work
+  plan prices against this cap.
 
 - **Q0.6 subject form?** digital = software/app/SaaS, `(a)` is a code swap
   (Recommended if repo/docs/site exist) / physical = device/tool/appliance/kit,
