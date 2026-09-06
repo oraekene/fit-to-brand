@@ -29,7 +29,7 @@ $prompts = @{
   'Q0.3'  = 'Which tool finishes the layout? Figma (recommended) / Illustrator / Canva / make it with code / idea only.'
   'Q0.4'  = 'Which font source do we use? Google Fonts (recommended) / Adobe Fonts (show the license) / a paid font seller (name it) / the fonts on your device.'
   'Q0.5'  = 'What spending cap do we use? credits / tokens / API-$ / render-minutes / seat-time + a number. There is no default. Skipped if you picked a preset.'
-  'Q0.6'  = 'Subject form? digital (rec if repo/docs/site) / physical / hybrid / human-service. No default — 1 click.'
+  'Q0.6'  = 'What shape is your subject? digital (software or an app) / physical (a device or kit) / hybrid (a device with software) / human-service (setup, care, or teaching). There is no default.'
   'Q0.7'  = 'Context pack? accept 5-item pack (rec) / swap one / batch-upload all. Default accept-pack.'
   'Q0.8'  = 'Anything binding? none-known (rec) / cert-regime [name it] / regulated-claim [name it].'
   'Q1.1'  = 'Run-mode? single = full swap (rec for launches) / category = share-shift with wedge.'

@@ -94,13 +94,11 @@ Write-through targets are listed per Q-set.
   default. Skipped if you picked a preset. Why this matters: every work
   plan prices against this cap.
 
-- **Q0.6 subject form?** digital = software/app/SaaS, `(a)` is a code swap
-  (Recommended if repo/docs/site exist) / physical = device/tool/appliance/kit,
-  `(a)` is a full-SKU swap / hybrid = device+software, both lenses / human-service
-  = install/maintenance/coaching/mediation, `(a)` is a service swap. *Why: picks the
-  5-item context pack and fixes which S4 verbs are legal (software-only `b-ING/
-  b-FACE/b-SRC` never attach to pure-physical).* No default — 1 click. → S0 header
-  `form:` + `SOURCES.log` pack selector.
+- **Q0.6 what shape is your subject?** Pick digital (software or an app) /
+  physical (a device or kit) / hybrid (a device with software) /
+  human-service (setup, care, or teaching). There is no default. Why this
+  matters: this choice sets which sources I ask for and which words
+  describe it.
 - **Q0.7 context pack — accept the 5-item pack?** Accept pack (Recommended) / swap
   one source / batch-upload all now. *Why: S0 can only cite what it was given — a
   thin spec propagates as missing `spec_link` (S2) and missing `spec cite` (S5A).*
