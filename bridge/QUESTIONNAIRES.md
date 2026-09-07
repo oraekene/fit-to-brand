@@ -116,11 +116,18 @@ Write-through targets are listed per Q-set.
   chart + 1 financial + 1 binding constraint.
   Agent note: take personal files by hand first and list them below. Never
   wait for a live link.
-- **Q0.8 anything binding?** none-known (Recommended default) / cert-regime [name
-  it: UL/CE/FDA/DOT, ROE/LOAC, curriculum, customary] / regulated-claim [name it].
-  `TBD` legal, stays flagged. *Why: seeds Out-of-Scope + NOT-fit before the agent
-  writes them; safety-critical fit without a named regime is red.* → S0
-  Out-of-Scope + NOTFIT.md seed.
+- **Q0.8 which legal constraints apply to us?** Pick none-known (recommended) /
+  a binding rule (name it: UL, CE, FDA, DOT, ROE, LOAC, curriculum, or
+  customary) / a regulated promise (name it). TBD is a legal answer and
+  stays flagged. Why this matters: what you name here stays out of scope
+  and off the no-go list. If safety is at stake and nothing is named, the
+  run stops here.
+  What the names mean: UL = US product safety tests. CE = EU market mark.
+  FDA = US food, drug, and device clearance. DOT = US transport safety
+  rules. ROE = rules of engagement, which say when force can be used. LOAC
+  = law of armed conflict. Curriculum = the official learning standard
+  where you teach. Customary = local custom and elder approval. Name the
+  one that binds you, or name another.
 
 **SOURCES.log format** (one line per source, H1-readable):
 `S<nn> = <label> | <family F1-F6> | <path-or-url> | <sha256-or-n/a> | <yyyy-mm-dd> | <who> | src=<asked|dropped|batch|default>` —
