@@ -99,9 +99,11 @@ Write-through targets are listed per Q-set.
   human-service (setup, care, or teaching). There is no default. Why this
   matters: this choice sets which sources I request and which words
   describe it.
-- **Q0.7 context pack — accept the 5-item pack?** Accept pack (Recommended) / swap
-  one source / batch-upload all now. *Why: S0 can only cite what it was given — a
-  thin spec propagates as missing `spec_link` (S2) and missing `spec cite` (S5A).*
+- **Q0.7 do you accept the 5-item pack of sources?** I show you the 5
+  items for your shape. Accept the pack (recommended) / swap one source /
+  send all sources. Why this matters: I can only cite what you give me, so
+  a thin pack leaves gaps later. If the sources live in your mail or chat,
+  send them by hand.
   Packs by form × run-mode (show only the matching pack, never all 280):
   digital-single: repo/README + docs/wiki + site+pricing + 1 user-voice (tickets OR
   Slack/Teams/Discord OR Gong/calls) + claims/certs if any; physical-single:
@@ -111,10 +113,7 @@ Write-through targets are listed per Q-set.
   gap; hybrid: digital pack + BOM/manual; category: 3–5 competitor feature+pricing
   pages + 1 comparison matrix + 1 review source (G2 OR Amazon OR App Store) +
   analyst/teardown iff wedge disputed; company/org as subject: charter/deck + org
-  chart + 1 financial + 1 binding constraint. Personal data (Gmail/Slack/notes/chat
-  histories): manual export drop to Inbox first, live connector later — never block
-  S0 on OAuth. → `runs/<id>/SOURCES.log` manifest (schema below); `spec-sha`
-  resolves to it.
+  chart + 1 financial + 1 binding constraint.
 - **Q0.8 anything binding?** none-known (Recommended default) / cert-regime [name
   it: UL/CE/FDA/DOT, ROE/LOAC, curriculum, customary] / regulated-claim [name it].
   `TBD` legal, stays flagged. *Why: seeds Out-of-Scope + NOT-fit before the agent
