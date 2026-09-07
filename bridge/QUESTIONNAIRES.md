@@ -102,7 +102,7 @@ Write-through targets are listed per Q-set.
 - **Q0.7 do you accept the 5-item pack of sources?** I show you the 5
   items for your shape. Accept the pack (recommended) / swap one source /
   send all sources. Why this matters: I can only cite what you give me, so
-  a thin pack leaves gaps later. If the sources live in your mail or chat,
+  a thin pack leaves gaps later. If your mail or chat has the sources,
   send them by hand.
   Packs by form × run-mode (show only the matching pack, never all 280):
   digital-single: repo/README + docs/wiki + site+pricing + 1 user-voice (tickets OR
@@ -114,6 +114,8 @@ Write-through targets are listed per Q-set.
   pages + 1 comparison matrix + 1 review source (G2 OR Amazon OR App Store) +
   analyst/teardown iff wedge disputed; company/org as subject: charter/deck + org
   chart + 1 financial + 1 binding constraint.
+  Agent note: take personal files by hand first and list them below. Never
+  wait for a live link.
 - **Q0.8 anything binding?** none-known (Recommended default) / cert-regime [name
   it: UL/CE/FDA/DOT, ROE/LOAC, curriculum, customary] / regulated-claim [name it].
   `TBD` legal, stays flagged. *Why: seeds Out-of-Scope + NOT-fit before the agent

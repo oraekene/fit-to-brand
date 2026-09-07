@@ -30,7 +30,7 @@ $prompts = @{
   'Q0.4'  = 'Which font source do we use? Google Fonts (recommended) / Adobe Fonts (show the license) / a paid font seller (name it) / the fonts on your device.'
   'Q0.5'  = 'What spending cap do we use? credits / tokens / API-$ / render-minutes / seat-time + a number. There is no default. Skipped if you picked a preset.'
   'Q0.6'  = 'What shape is your subject? digital (software or an app) / physical (a device or kit) / hybrid (a device with software) / human-service (setup, care, or teaching). There is no default.'
-  'Q0.7'  = 'Do you accept the pack of sources? I show you the 5 items for your shape. Accept the pack (recommended) / swap one source / send all sources. If the sources live in mail or chat, send them by hand.'
+  'Q0.7'  = 'Do you accept the pack of sources? Accept the pack (recommended) / swap one source / send all sources. If your mail or chat has the sources, send them by hand.'
   'Q0.8'  = 'Anything binding? none-known (rec) / cert-regime [name it] / regulated-claim [name it].'
   'Q1.1'  = 'Run-mode? single = full swap (rec for launches) / category = share-shift with wedge.'
   'Q1.2'  = 'Overlay? O-GTM (rec) / O-OPS / O-EDU / O-SUBSISTENCE / custom (+define registry).'
