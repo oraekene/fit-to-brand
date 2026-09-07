@@ -32,7 +32,7 @@ $prompts = @{
   'Q0.6'  = 'What shape is your subject? digital (software or an app) / physical (a device or kit) / hybrid (a device with software) / human-service (setup, care, or teaching). There is no default.'
   'Q0.7'  = 'Do you accept the pack of sources? Accept the pack (recommended) / swap one source / send all sources. If your mail or chat has the sources, send them by hand.'
   'Q0.8'  = 'Which legal constraints apply to us? none-known (recommended) / a binding rule (name it) / a regulated promise (name it). TBD is a legal answer and stays flagged.'
-  'Q1.1'  = 'Run-mode? single = full swap (rec for launches) / category = share-shift with wedge.'
+  'Q1.1'  = 'What is the scope? single (one product, recommended for a product launch) / category (whole category).'
   'Q1.2'  = 'Overlay? O-GTM (rec) / O-OPS / O-EDU / O-SUBSISTENCE / custom (+define registry).'
   'Q1.3'  = 'Quotas 300/50/10? accept (rec) / tighten / loosen (numbers).'
   'Q1.4'  = 'Claims seed? approved/prohibited/certs, or TBD (legal, stays flagged).'

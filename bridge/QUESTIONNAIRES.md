@@ -141,9 +141,9 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q1 — S0 freeze (before leaving S0)
 
-- **Q1.1 run-mode?** single = one offering, `(a)` means full swap (Recommended for a
-  product launch) / category = whole category, `(a)` means share-shift with a wedge.
-  *Why: licenses or forbids challenger claims downstream.* → S0 header.
+- **Q1.1 what is the scope?** Pick single (one product, recommended for a
+  product launch) / category (whole category). Why this matters: the scope
+  decides whether we can make challenger promises later.
 - **Q1.2 overlay?** O-GTM (Recommended default) / O-OPS / O-EDU / O-SUBSISTENCE /
   custom (then define channel enum + cert regime + group noun + brief format). → header.
 - **Q1.3 quotas — accept 300/50/10?** Yes (Recommended) / tighten / loosen (give
