@@ -124,7 +124,7 @@ Write-through targets are listed per Q-set.
   run stops here.
   What the names mean: UL = US product safety tests. CE = EU market mark.
   FDA = US food, drug, and device clearance. DOT = US transport safety
-  rules. ROE = rules of engagement, which say when force can be used. LOAC
+  rules. ROE = rules on when to use force. LOAC
   = law of armed conflict. Curriculum = the official learning standard
   where you teach. Customary = local custom and elder approval. Name the
   one that binds you, or name another.
