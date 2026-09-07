@@ -148,8 +148,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   / O-OPS (field operations) / O-EDU (learning) / O-SUBSISTENCE (trade without
   money) / custom (you define it later). Why this matters: the setup sets the
   words for groups, channels, and rules. Mixed terms fail the checks.
-- **Q1.3 quotas — accept 300/50/10?** Yes (Recommended) / tighten / loosen (give
-  numbers). → header quotas.
+- **Q1.3 do you accept the size limits 300/50/10?** Accept them (recommended) /
+  tighten them / loosen them (give numbers). The three numbers cap the write-up,
+  the ranking, and the shortlist. Why this matters: the limits cap the length
+  of each result.
 - **Q1.4 claims seed?** Approved claims / prohibited claims / certs-regimes you already
   know (provide, or `TBD` — legal answers, flagged until filled). *Why: seeds the one
   claims registry; S0 Out-of-Scope is built from this.* → S0 + claims registry.
