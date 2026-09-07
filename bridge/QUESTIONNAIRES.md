@@ -161,8 +161,12 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q2 — S1 fork (only on Epistemic Fork ties; otherwise keep both silently)
 
-- **Q2.1 which theme reads truer — broad or sharp?** Keep-both (Recommended default) /
-  commit broad / commit sharp. → fork tag on all downstream runs.
+- **Q2.1 which theme reads truer?** I show you both themes. The broad one
+  covers more situations. The sharp one names the winning difference. Keep
+  both (recommended) / commit to the broad one / commit to the sharp one.
+  I ask this only when both read equally true. Otherwise I keep both
+  without asking. Why this matters: one theme focuses later work, and both
+  cost double.
 
 ## Q3 — S2/S3 + reference selection (before leaving S3)
 
