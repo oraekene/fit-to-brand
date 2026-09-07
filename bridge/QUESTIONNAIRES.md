@@ -144,8 +144,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 - **Q1.1 what is the scope?** Pick single (one product, recommended for a
   product launch) / category (whole category). Why this matters: the scope
   decides whether we can make challenger promises later.
-- **Q1.2 overlay?** O-GTM (Recommended default) / O-OPS / O-EDU / O-SUBSISTENCE /
-  custom (then define channel enum + cert regime + group noun + brief format). → header.
+- **Q1.2 which market setup do we use?** Pick O-GTM (sell products, recommended)
+  / O-OPS (field operations) / O-EDU (learning) / O-SUBSISTENCE (trade without
+  money) / custom (you define it later). Why this matters: the setup sets the
+  words for groups, channels, and rules. Mixed terms fail the checks.
 - **Q1.3 quotas — accept 300/50/10?** Yes (Recommended) / tighten / loosen (give
   numbers). → header quotas.
 - **Q1.4 claims seed?** Approved claims / prohibited claims / certs-regimes you already
