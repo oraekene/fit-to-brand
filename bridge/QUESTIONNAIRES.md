@@ -152,9 +152,12 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   tighten them / loosen them (give numbers). The three numbers cap the write-up,
   the ranking, and the shortlist. Why this matters: the limits cap the length
   of each result.
-- **Q1.4 claims seed?** Approved claims / prohibited claims / certs-regimes you already
-  know (provide, or `TBD` — legal answers, flagged until filled). *Why: seeds the one
-  claims registry; S0 Out-of-Scope is built from this.* → S0 + claims registry.
+- **Q1.4 which promises can we make?** Give the promises we can make, the
+  forbidden promises, and the certificates you hold. For example: 'charges
+  three phones a day' is a promise we can make, and 'cools the room' is
+  forbidden. A certificate proves a regulated promise, like a CE mark behind
+  'meets EU safety rules'. TBD is a legal answer and stays flagged. Why this
+  matters: this builds the promise list and the out-of-scope list.
 
 ## Q2 — S1 fork (only on Epistemic Fork ties; otherwise keep both silently)
 
