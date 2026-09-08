@@ -200,9 +200,12 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q5 — S5B regroup (before leaving S5B)
 
-- **Q5.1 grouping check: any buyer missing, merged, or split?** Accept groups
-  (Recommended) / add / merge / split (name them). *Why: cheapest moment to fix the
-  audience — later it costs a `GO BACK`.* → S5B_GROUPS.csv.
+- **Q5.1 are the groups right?** I show you the groups. A group is buyers of
+  one kind. Buyers are the people who pay. They share habits (how they live
+  and what hurts), a segment (which slice of the market), and a channel
+  (where you reach them). Accept them (recommended) / add / merge / split
+  (name them). Why this matters: fixes are cheapest here. Later fixes redo
+  completed work.
 - **Q5.2 motion per group — PLG vs enterprise (or overlay equivalent)?** Accept
   proposed (Recommended) / correct per group. → group rows; sets CTA hardness + M
   cadence later.
