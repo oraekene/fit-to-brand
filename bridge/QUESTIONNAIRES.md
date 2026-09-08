@@ -188,8 +188,9 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q4 — S4/S5A (before leaving S5A; category-mode only for Q4.1)
 
-- **Q4.1 wedge priority?** price / performance / distribution / compatibility (rank top
-  two). → K-fit wedge ranking.
+- **Q4.1 rank the top two winning differences:** price / performance /
+  distribution / compatibility. Asked only in whole-category runs. Why this
+  matters: the ranking orders the shortlist.
 - **Q4.2 which cert regimes touch us?** UL-CE-FDA-DOT set / ROE-LOAC / curriculum /
   customary / none-known (`TBD` legal). → overclaim guardrail + safety notes.
 - **Q4.3 what must we never claim?** Free text, or `none-known`. *Why: seeds NOT-fit
