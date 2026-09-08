@@ -195,8 +195,8 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   CE, FDA, DOT) / operation rules (ROE, LOAC) / curriculum standards / local
   custom / none-known. TBD is a legal answer and stays flagged. Why this
   matters: the rules keep promises honest and add safety notes.
-- **Q4.3 what must we never claim?** Free text, or `none-known`. *Why: seeds NOT-fit
-  before the agent writes it.* → NOTFIT.md seed.
+- **Q4.3 which promises are forbidden?** Write them in your own words, or
+  answer none-known. Why this matters: your answers become the no-go list.
 
 ## Q5 — S5B regroup (before leaving S5B)
 
