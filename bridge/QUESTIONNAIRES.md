@@ -191,8 +191,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 - **Q4.1 rank the top two winning differences:** price / performance /
   distribution / compatibility. Asked only in whole-category runs. Why this
   matters: the ranking orders the shortlist.
-- **Q4.2 which cert regimes touch us?** UL-CE-FDA-DOT set / ROE-LOAC / curriculum /
-  customary / none-known (`TBD` legal). → overclaim guardrail + safety notes.
+- **Q4.2 which binding rules touch this work?** Pick product certificates (UL,
+  CE, FDA, DOT) / operation rules (ROE, LOAC) / curriculum standards / local
+  custom / none-known. TBD is a legal answer and stays flagged. Why this
+  matters: the rules keep promises honest and add safety notes.
 - **Q4.3 what must we never claim?** Free text, or `none-known`. *Why: seeds NOT-fit
   before the agent writes it.* → NOTFIT.md seed.
 
