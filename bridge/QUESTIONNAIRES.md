@@ -181,9 +181,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   informal trade, regulated work). No (recommended) / yes, name it
   (starting with SEC-) and define it in one line. Why this matters: a named
   slice marks your industry in every result.
-- **Q3.3 reference: approve the stretch-tested pick, supply another, or brief one?**
-  Approve pick (Recommended if stretch note holds) / supply image / describe direction.
-  *Why: the reference must survive Top-K scenes, not just please.* → Stage 1 input.
+- **Q3.3 which visual reference do we use?** I show you one reference that
+  works across scenes. Approve my pick (recommended if you agree) / send
+  another image / describe the direction in words. Why this matters: the
+  reference must work in every scene, not just look good.
 
 ## Q4 — S4/S5A (before leaving S5A; category-mode only for Q4.1)
 
