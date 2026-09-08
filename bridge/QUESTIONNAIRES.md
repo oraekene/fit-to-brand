@@ -170,8 +170,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q3 — S2/S3 + reference selection (before leaving S3)
 
-- **Q3.1 currency/year/PPP?** USD + current year (Recommended) / other base / staple-
-  equivalents (subsistence runs). → S3 header.
+- **Q3.1 which currency and year do we use?** Pick USD and the current year
+  (recommended) / another currency and year (name them) / staple amounts (for
+  trade without money). Why this matters: one money keeps all prices
+  comparable.
 - **Q3.2 custom sectors?** None (Recommended) / add `SEC-` keys with one-line
   definitions. → S2 header.
 - **Q3.3 reference: approve the stretch-tested pick, supply another, or brief one?**
