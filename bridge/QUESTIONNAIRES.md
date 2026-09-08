@@ -172,7 +172,7 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 - **Q3.1 which currency and year do we use?** Pick USD and the current year
   (recommended) / another currency and year (name them) / staple amounts (for
-  trade without money). Why this matters: one money keeps all prices
+  trade without money). Why this matters: one currency keeps all prices
   comparable.
 - **Q3.2 custom sectors?** None (Recommended) / add `SEC-` keys with one-line
   definitions. → S2 header.
