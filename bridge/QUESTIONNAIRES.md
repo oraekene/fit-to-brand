@@ -174,8 +174,13 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   (recommended) / another currency and year (name them) / staple amounts (for
   trade without money). Why this matters: one currency keeps all prices
   comparable.
-- **Q3.2 custom sectors?** None (Recommended) / add `SEC-` keys with one-line
-  definitions. → S2 header.
+- **Q3.2 do you need a market slice of your own?** A market slice is one
+  industry or trade. The built-in slices are SEC-HEALTH, SEC-MINING,
+  SEC-MARITIME, SEC-AGRI, SEC-ENERGY, SEC-BUILT, SEC-INFORMAL, and
+  SEC-REGULATED (health, mining, sea trade, farming, energy, building,
+  informal trade, regulated work). No (recommended) / yes, name it
+  (starting with SEC-) and define it in one line. Why this matters: a named
+  slice marks your industry in every result.
 - **Q3.3 reference: approve the stretch-tested pick, supply another, or brief one?**
   Approve pick (Recommended if stretch note holds) / supply image / describe direction.
   *Why: the reference must survive Top-K scenes, not just please.* → Stage 1 input.
