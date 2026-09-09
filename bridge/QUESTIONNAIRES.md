@@ -266,8 +266,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 - **Q11.1 is the product version list right?** I show you the list. Accept it
   (recommended) / amend it. Why this matters: only listed versions get
   tested.
-- **Q11.2 Brand Lock roles confirmed?** Confirm (Recommended) / correct a role. Gate 4;
-  one test asset follows, never scale before audit.
+- **Q11.2 are the owners right?** Each scene part has an owner. The photo
+  inspires the layout. The kit controls the logo and colors. People and
+  places must change. Accept them (recommended) / correct a role. Why this
+  matters: one test piece follows, and nothing scales before review.
 - **Q11.3 formats + approved variables for scale?** Accept matrix / amend. → Stage 9.
 
 ## Q12 — Stages 10/11
