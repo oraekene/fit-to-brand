@@ -238,7 +238,11 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q9 — Stage 3 → Gate 3
 
-- **Q9.1 agree KEEP / REMOVE / REFINE?** Accept (Recommended) / contest named items.
+- **Q9.1 do you agree with the review marks?** I show each item marked keep,
+  remove, or refine. KEEP means the strongest pieces that define the system.
+  REMOVE means pieces that add clutter. REFINE means pieces that stay but need
+  a clearer rule. Accept them (recommended) / contest named items. Why this
+  matters: the marks decide what stays, what goes, and what gets a new rule.
 - **Q9.2 REFINE vs RESTART recommendation — accept?** Accept (Recommended with trigger
   list shown) / override (state which triggers you read differently).
 - **Q9.3 Anchor approval?** Approve as source of truth (Recommended) / refine named
