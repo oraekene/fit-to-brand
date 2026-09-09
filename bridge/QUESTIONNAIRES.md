@@ -248,9 +248,11 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   Restart means a fresh start because the problems run deep. Accept it
   (recommended) / override it and say which triggers you see differently.
   Why this matters: refine fixes small items, and restart begins fresh.
-- **Q9.3 Anchor approval?** Approve as source of truth (Recommended) / refine named
-  rule / reject direction. *Irreversible-adjacent → wizard-style explicit confirm;
-  rebrand adds deprecation scope to this confirm.*
+- **Q9.3 do you approve the locked design?** It is the source of truth for
+  later work. Approve it (recommended) / adjust a named rule / reject the
+  direction. Say yes in your own words. This lock is hard to undo. In a
+  rebrand, also name what stays and what goes. Why this matters: every later
+  step obeys this lock.
 
 ## Q10 — Stage 4
 
