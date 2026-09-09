@@ -256,8 +256,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q10 — Stage 4
 
-- **Q10.1 which guideline modules?** Multi-select, minimum set pre-checked
-  (Recommended). → one 16:9 slide each.
+- **Q10.1 which guideline chapters (one topic each) do we make?** I show the
+  list and mark the minimum set. Pick one or more (recommended: the marked
+  minimum). Why this matters: each chapter becomes one slide (one 16:9
+  presentation).
 
 ## Q11 — Stages 5/6/9 (three small gates)
 
