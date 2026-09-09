@@ -228,8 +228,9 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q8 — Stage 2 (fonts first, then every generation)
 
-- **Q8.1 font system A or B?** A (Recommended, agent states why) / B / neither (state
-  what to change). → typography approval; kit cannot generate before this.
+- **Q8.1 which font system do we use, A or B?** I show you both systems with
+  reasons. A (recommended) / B / neither (say what to change). Why this
+  matters: no kit work starts before you approve the fonts.
 - **Q8.2 Generation Plan: approve, change, or cancel?** Approve (Recommended if plan
   matches) / request changes / cancel. *Fires before every costly generation.
   When the plan cites `provider:` + `model:`, approval cites the green
