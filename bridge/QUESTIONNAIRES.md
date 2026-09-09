@@ -213,8 +213,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q6 — Brand Stage 0 (brief Q1–Q10, conversational per skill; plus one import check)
 
-- **Q6.1 import S5B table + Block B + S0 claims verbatim?** Yes (Recommended) / adjust
-  (what exactly — adjustments return as S5B findings, never silent forks). → brief.
+- **Q6.1 do we import the groups, the positioning, and the promises word for
+  word?** Yes (recommended) / adjust (say exactly what). Why this matters:
+  the message keeps one audience list, so changes return as findings, never
+  as a quiet second list.
 
 ## Q7 — Stage 1 → Gate 2
 
