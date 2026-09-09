@@ -231,10 +231,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 - **Q8.1 which font system do we use, A or B?** I show you both systems with
   reasons. A (recommended) / B / neither (say what to change). Why this
   matters: no kit work starts before you approve the fonts.
-- **Q8.2 Generation Plan: approve, change, or cancel?** Approve (Recommended if plan
-  matches) / request changes / cancel. *Fires before every costly generation.
-  When the plan cites `provider:` + `model:`, approval cites the green
-  `Test-Provider` check (eligibility); the spend decision stays human.*
+- **Q8.2 do you approve the work plan?** I ask this before every generation
+  that costs money. Approve it (recommended if it matches) / request changes
+  / cancel it. I show the eligibility check beside the plan. You make the
+  spending choice. Why this matters: each approval lets the run spend.
 
 ## Q9 — Stage 3 → Gate 3
 
