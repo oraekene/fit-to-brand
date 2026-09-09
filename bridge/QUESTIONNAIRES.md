@@ -243,8 +243,11 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   REMOVE means pieces that add clutter. REFINE means pieces that stay but need
   a clearer rule. Accept them (recommended) / contest named items. Why this
   matters: the marks decide what stays, what goes, and what gets a new rule.
-- **Q9.2 REFINE vs RESTART recommendation — accept?** Accept (Recommended with trigger
-  list shown) / override (state which triggers you read differently).
+- **Q9.2 do you accept my recommendation?** I recommend refine or restart and
+  show the triggers. Refine means small local fixes with the direction kept.
+  Restart means a fresh start because the problems run deep. Accept it
+  (recommended) / override it and say which triggers you see differently.
+  Why this matters: refine fixes small items, and restart begins fresh.
 - **Q9.3 Anchor approval?** Approve as source of truth (Recommended) / refine named
   rule / reject direction. *Irreversible-adjacent → wizard-style explicit confirm;
   rebrand adds deprecation scope to this confirm.*
