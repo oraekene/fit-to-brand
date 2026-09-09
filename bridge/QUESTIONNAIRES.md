@@ -268,7 +268,7 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   tested.
 - **Q11.2 are the owners right?** Each scene part has an owner. The photo
   inspires the layout. The kit controls the logo and colors. People and
-  places must change. Accept them (recommended) / correct a role. Why this
+  places must change. Accept them (recommended) / correct an owner. Why this
   matters: one test piece follows, and nothing scales before review.
 - **Q11.3 formats + approved variables for scale?** Accept matrix / amend. → Stage 9.
 
