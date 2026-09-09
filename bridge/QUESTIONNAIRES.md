@@ -206,9 +206,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   (where you reach them). Accept them (recommended) / add / merge / split
   (name them). Why this matters: fixes are cheapest here. Later fixes redo
   completed work.
-- **Q5.2 motion per group — PLG vs enterprise (or overlay equivalent)?** Accept
-  proposed (Recommended) / correct per group. → group rows; sets CTA hardness + M
-  cadence later.
+- **Q5.2 how do we sell to each group (self-serve or sales-led, or your
+  setup's words)?** I propose one for each group. Accept my proposal
+  (recommended) / correct per group. Why this matters: how we sell sets the
+  ask and how often we measure results.
 
 ## Q6 — Brand Stage 0 (brief Q1–Q10, conversational per skill; plus one import check)
 
