@@ -220,8 +220,11 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q7 — Stage 1 → Gate 2
 
-- **Q7.1 approve transferable principles + prohibitions + direction statement?**
-  Approve (Recommended) / adjust named item / reject (→ new direction, not a blend).
+- **Q7.1 do you approve the direction?** I show you all three. The principles
+  are the design ideas we keep. The prohibitions are what we must not copy.
+  The direction is the one-sentence plan. Approve them (recommended) / adjust
+  a named item / reject them and restart. Why this matters: no kit work
+  starts before you approve.
 
 ## Q8 — Stage 2 (fonts first, then every generation)
 
