@@ -270,7 +270,9 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   inspires the layout. The kit controls the logo and colors. People and
   places must change. Accept them (recommended) / correct an owner. Why this
   matters: one test piece follows, and nothing scales before review.
-- **Q11.3 formats + approved variables for scale?** Accept matrix / amend. → Stage 9.
+- **Q11.3 which formats and details can change at scale?** I show you the
+  table. Accept it (recommended) / amend it. Why this matters: only approved
+  changes ship at scale.
 
 ## Q12 — Stages 10/11
 
