@@ -286,10 +286,12 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q13 — M0 predictions (before any flight; defaults proposed per motion)
 
-- **Q13.1 kill + reposition thresholds per thread — accept proposed?** Accept defaults
-  (Recommended; e.g. PLG: rate floor after 1k impressions; enterprise: after one
-  pipeline review) / adjust per thread. *Why: a prediction without a kill line is
-  logging, not measurement.* → M_PREDICTIONS.csv. Confusion trip default 10%.
+- **Q13.1 do you accept the stop rules?** I propose stop rules for each placed
+  message. Self-serve messages stop below a response floor after 1,000 views.
+  Sales-led messages stop after one pipeline review. Mix-ups above 1 in 10
+  stop a message. Accept them (recommended) / adjust per placed message. Why
+  this matters: a prediction without a stop rule only watches instead of
+  measuring.
 
 ## Q14 — M3 judging (per flight)
 
