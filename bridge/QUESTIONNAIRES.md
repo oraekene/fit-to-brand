@@ -295,8 +295,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q14 — M3 judging (per flight)
 
-- **Q14.1 verdicts accept or override?** Accept table (Recommended) / override named
-  PRED-ID with reason. → M3_DECISIONS.md.
+- **Q14.1 do you accept the flight decisions?** A flight is one run of your
+  messages in the market. I show you the decisions table. Accept them
+  (recommended) / override a named one with a reason. Why this matters: your
+  word is final on every flight.
 - **Q14.2 KILL-GROUP and launch-hold confirms?** Explicit confirm required, always —
   no default, no bulk approval (wizard-style irreversible confirm). → retirement notes.
 
