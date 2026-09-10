@@ -311,8 +311,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   / negotiable / drop. There is no default. You sort. I never decide alone.
   If a later review disagrees with your sort, I ask you again. Why this
   matters: kept parts set the rules for later work.
-- **QR.2 per-group keep / kill / merge / split?** Accept proposed regroup
-  (Recommended) / change named groups. → S5B regroup rows.
+- **QR.2 do you accept the proposed regroup?** I show you the regroup, group
+  by group: keep, stop, merge, or split. Accept it (recommended) / change
+  named groups. Why this matters: the regroup sets which groups the new brand
+  serves.
 - **QR.3 coexistence window?** 8 weeks (Recommended default) / other sell-through
   timing. → transition plan.
 
