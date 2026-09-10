@@ -306,8 +306,11 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## QR — Rebrand extras (in addition to the joint spine)
 
-- **QR.1 equity guardrails?** For each recognition asset: must-keep / negotiable /
-  must-drop (user sorts; conflicts with audit escalate, never auto-resolve).
+- **QR.1 which parts stay?** A recognition part is how buyers spot you, like
+  the wordmark shape, the hero color, or the pack shape. Sort each one: keep
+  / negotiable / drop. There is no default. You sort. I never decide alone.
+  If a later review disagrees with your sort, I ask you again. Why this
+  matters: kept parts set the rules for later work.
 - **QR.2 per-group keep / kill / merge / split?** Accept proposed regroup
   (Recommended) / change named groups. → S5B regroup rows.
 - **QR.3 coexistence window?** 8 weeks (Recommended default) / other sell-through
