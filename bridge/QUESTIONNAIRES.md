@@ -280,8 +280,9 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   front, three-quarter, isometric, lineup, label-architecture, and exploded.
   Accept them (recommended) / amend them. Why this matters: the views carry
   the packaging into review.
-- **Q12.2 final review signoff?** Sign (Recommended when checklist passes) / hold named
-  item. → completion report + M0.
+- **Q12.2 do you sign the final review?** I show you the checklist. Sign
+  (recommended when it passes) / hold a named item. Why this matters: signing
+  writes the completion report and starts the predictions.
 
 ## Q13 — M0 predictions (before any flight; defaults proposed per motion)
 
