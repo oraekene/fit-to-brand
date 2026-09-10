@@ -276,7 +276,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## Q12 — Stages 10/11
 
-- **Q12.1 requested packaging views?** Accept suggested six / amend.
+- **Q12.1 do you accept the six packaging views?** I show you six views:
+  front, three-quarter, isometric, lineup, label-architecture, and exploded.
+  Accept them (recommended) / amend them. Why this matters: the views carry
+  the packaging into review.
 - **Q12.2 final review signoff?** Sign (Recommended when checklist passes) / hold named
   item. → completion report + M0.
 
