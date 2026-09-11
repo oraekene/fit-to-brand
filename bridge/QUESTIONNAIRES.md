@@ -315,8 +315,10 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
   by group: keep, stop, merge, or split. Accept it (recommended) / change
   named groups. Why this matters: the regroup sets which groups the new brand
   serves.
-- **QR.3 coexistence window?** 8 weeks (Recommended default) / other sell-through
-  timing. → transition plan.
+- **QR.3 how long do remaining and new packs share the shelf?** Remaining
+  packs sit side by side with new packs while stock sells. 8 weeks
+  (recommended) / another timing (name it). Why this matters: the timing
+  orders the changeover from remaining packs to new packs.
 
 ## QC — Campaign extras (in addition to the joint spine)
 
