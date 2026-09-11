@@ -322,8 +322,9 @@ manifest hash or the short-hash of the manifest file — dangling `spec-sha` is 
 
 ## QC — Campaign extras (in addition to the joint spine)
 
-- **QC.1 which threads fly?** Multi-select from the candidate scene×SKU×format matrix
-  (proven first is pre-checked). → THREADS.csv STATUS.
+- **QC.1 which placed messages fly?** I show you the candidate placed messages.
+  Pick one or more (recommended: proven ones first). Why this matters: only
+  chosen messages fly.
 - **QC.2 new scene family ack?** Confirm test-asset-before-scale understood (always
   asked — this is where drift enters). → Gate 4 per family.
 
